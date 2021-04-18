@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.31112.23
+VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockLevelMinitoringApp", "StockLevelMinitoringApp\StockLevelMinitoringApp.csproj", "{78EAA2ED-2890-41B1-9F16-04B033A2FE2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormUI", "FormUI\FormUI.csproj", "{8C936CA4-3BE9-4048-9428-35FA2C87BB9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{78EAA2ED-2890-41B1-9F16-04B033A2FE2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78EAA2ED-2890-41B1-9F16-04B033A2FE2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78EAA2ED-2890-41B1-9F16-04B033A2FE2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78EAA2ED-2890-41B1-9F16-04B033A2FE2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C936CA4-3BE9-4048-9428-35FA2C87BB9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C936CA4-3BE9-4048-9428-35FA2C87BB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C936CA4-3BE9-4048-9428-35FA2C87BB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C936CA4-3BE9-4048-9428-35FA2C87BB9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {44117687-1FD9-4C48-AF1F-04A779275784}
+		SolutionGuid = {809CE96D-A099-4435-81FF-FA3C9F27471F}
 	EndGlobalSection
 EndGlobal
