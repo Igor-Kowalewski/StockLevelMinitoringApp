@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FormUI.Properties
+namespace Magazyn.Properties
 {
 
 
