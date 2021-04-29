@@ -10,23 +10,24 @@ namespace Magazyn
 {
     class DataAccess
     {
-        public void DodajOsobe(string imie, string nazwisko)
+        public void AddClient(string imie, string nazwisko)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("BazaMagDB")))
             {
-                List<Klient> klienci = new List<Klient>();
-
-                klienci.Add(new Klient {Imie = imie, Nazwisko = nazwisko });
+                List<Customer> klienci = new List<Customer>
+                {
+                    new Customer { Imie = imie, Nazwisko = nazwisko }
+                };
 
                 connection.Execute("dbo.Dodaj @Imie, @Nazwisko", klienci);
             }
         }
 
-        public List<Klient> ZnajdzOsobe(string nazwisko)
+        public List<Customer> SearchClient(string nazwisko)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("BazaMagDB")))
             {
-                var output = connection.Query<Klient>($"select * from Klienci where nazwisko = '{ nazwisko }'").ToList();
+                var output = connection.Query<Customer>($"select * from Klienci where nazwisko = '{ nazwisko }'").ToList();
                 return output;
             }
         }

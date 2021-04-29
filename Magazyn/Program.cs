@@ -16,7 +16,12 @@ namespace Magazyn
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard());
+
+            // PONIŻSZA INICJALIZACJA FORM1 WYMAGANA ŻEBY PRZECHODZIĆ POMIĘDZY FORMSAMI BEZ ZAMKNIĘCIA APLIKACJI - IGOR KOWALEWSKI
+            // POPRZEDNIA WERSJA:
+            // Application.Run(new Dashboard());
+            (new MainForm()).Show();
+            Application.Run();
         }
     }
 }

@@ -50,19 +50,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dashboard.cs">
+    <Compile Include="CustomersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dashboard.Designer.cs">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <Compile Include="CustomersForm.Designer.cs">
+      <DependentUpon>CustomersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LevelsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LevelsForm.Designer.cs">
+      <DependentUpon>LevelsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataAccess.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper.cs" />
-    <Compile Include="Klient.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="OrdersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrdersForm.Designer.cs">
+      <DependentUpon>OrdersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Dashboard.resx">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <EmbeddedResource Include="CustomersForm.resx">
+      <DependentUpon>CustomersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LevelsForm.resx">
+      <DependentUpon>LevelsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrdersForm.resx">
+      <DependentUpon>OrdersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
