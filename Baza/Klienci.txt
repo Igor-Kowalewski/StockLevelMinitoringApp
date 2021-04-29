@@ -1,6 +1,0 @@
-id,imie,nazwisko
-1,Jan                 ,Kowalski                      
-2,Zbigniew            ,Kowalski                      
-3,Marian              ,Wodny                         
-4,Ewa                 ,Góra                          
-5,Tomasz              ,Góra                          
