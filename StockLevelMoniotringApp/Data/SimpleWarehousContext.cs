@@ -1,11 +1,13 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using WindowsFormsApp1.Models;
+using FormUI.Models;
+using WindowsFormsApp1;
+using Microsoft.Extensions.Configuration;
 
 #nullable disable
 
-namespace WindowsFormsApp1.Data
+namespace FormUI.Data
 {
     public partial class SimpleWarehousContext : DbContext
     {
@@ -18,20 +20,20 @@ namespace WindowsFormsApp1.Data
         {
         }
 
-        public virtual DbSet<Adre> Adres { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Company> Companies { get; set; }
-        public virtual DbSet<Item> Items { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<Person> People { get; set; }
-        public virtual DbSet<Warehouse> Warehouses { get; set; }
+        public virtual DbSet<Adresses> Adresses { get; set; }
+        public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<Companies> Companies { get; set; }
+        public virtual DbSet<Products> Items { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
+        public virtual DbSet<OrdersDetails> OrderDetails { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Warehouses> Warehouses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=SimpleWarehous;Integrated Security=True");
+                optionsBuilder.UseSqlServer(Program.Configuration.GetConnectionString("SimpleWarehous"));
             }
         }
 
@@ -39,7 +41,7 @@ namespace WindowsFormsApp1.Data
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Polish_CI_AS");
 
-            modelBuilder.Entity<Adre>(entity =>
+            modelBuilder.Entity<Adresses>(entity =>
             {
                 entity.HasKey(e => e.IdAdres);
 
@@ -69,7 +71,7 @@ namespace WindowsFormsApp1.Data
                     .HasColumnName("town");
             });
 
-            modelBuilder.Entity<Category>(entity =>
+            modelBuilder.Entity<Categories>(entity =>
             {
                 entity.HasKey(e => e.IdCategory);
 
@@ -86,7 +88,7 @@ namespace WindowsFormsApp1.Data
                     .HasColumnName("name");
             });
 
-            modelBuilder.Entity<Company>(entity =>
+            modelBuilder.Entity<Companies>(entity =>
             {
                 entity.HasKey(e => e.IdCompany);
 
@@ -117,7 +119,7 @@ namespace WindowsFormsApp1.Data
                     .HasConstraintName("FK_COMPANY_ADRES");
             });
 
-            modelBuilder.Entity<Item>(entity =>
+            modelBuilder.Entity<Products>(entity =>
             {
                 entity.HasKey(e => e.IdItem);
 
@@ -134,6 +136,12 @@ namespace WindowsFormsApp1.Data
                 entity.Property(e => e.Height).HasColumnName("height");
 
                 entity.Property(e => e.Location).HasColumnName("location");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("name");
 
                 entity.Property(e => e.Price).HasColumnName("price");
 
@@ -153,7 +161,7 @@ namespace WindowsFormsApp1.Data
                     .HasConstraintName("FK_ITEMS_WAREHOUSE");
             });
 
-            modelBuilder.Entity<Order>(entity =>
+            modelBuilder.Entity<Orders>(entity =>
             {
                 entity.HasKey(e => e.IdOrder);
 
@@ -183,7 +191,7 @@ namespace WindowsFormsApp1.Data
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.OrderItem)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_ORDER_ITEMS");
+                    .HasConstraintName("FK_ORDER_ORDER_DETAIL");
 
                 entity.HasOne(d => d.PurchaserNavigation)
                     .WithMany(p => p.OrderPurchaserNavigations)
@@ -204,15 +212,46 @@ namespace WindowsFormsApp1.Data
                     .HasConstraintName("FK_ORDER_ADRES1");
             });
 
-            modelBuilder.Entity<Person>(entity =>
+            modelBuilder.Entity<OrdersDetails>(entity =>
             {
-                entity.HasKey(e => e.IdPeople);
+                entity.HasKey(e => e.IdOrderDetail);
 
-                entity.ToTable("PEOPLE");
+                entity.ToTable("ORDER_DETAIL");
 
-                entity.Property(e => e.IdPeople)
+                entity.Property(e => e.IdOrderDetail)
                     .ValueGeneratedNever()
-                    .HasColumnName("id_people");
+                    .HasColumnName("id_order_detail");
+
+                entity.Property(e => e.Discount).HasColumnName("discount");
+
+                entity.Property(e => e.Price).HasColumnName("price");
+
+                entity.Property(e => e.Product).HasColumnName("product");
+
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
+
+                entity.HasOne(d => d.ProductNavigation)
+                    .WithMany(p => p.OrderDetails)
+                    .HasForeignKey(d => d.Product)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ORDER_DETAIL_ITEMS");
+            });
+
+            modelBuilder.Entity<Users>(entity =>
+            {
+                entity.HasKey(e => e.IdUser)
+                    .HasName("PK_PEOPLE");
+
+                entity.ToTable("USER");
+
+                entity.Property(e => e.IdUser)
+                    .ValueGeneratedNever()
+                    .HasColumnName("id_user");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(40)
+                    .IsUnicode(false)
+                    .HasColumnName("email");
 
                 entity.Property(e => e.Job).HasColumnName("job");
 
@@ -225,7 +264,13 @@ namespace WindowsFormsApp1.Data
                 entity.Property(e => e.Pesel)
                     .IsRequired()
                     .HasMaxLength(11)
+                    .IsUnicode(false)
                     .HasColumnName("pesel");
+
+                entity.Property(e => e.Phone)
+                    .HasMaxLength(16)
+                    .IsUnicode(false)
+                    .HasColumnName("phone");
 
                 entity.Property(e => e.Surename)
                     .IsRequired()
@@ -234,12 +279,12 @@ namespace WindowsFormsApp1.Data
                     .HasColumnName("surename");
 
                 entity.HasOne(d => d.JobNavigation)
-                    .WithMany(p => p.People)
+                    .WithMany(p => p.Users)
                     .HasForeignKey(d => d.Job)
                     .HasConstraintName("FK_PEOPLE_COMPANY");
             });
 
-            modelBuilder.Entity<Warehouse>(entity =>
+            modelBuilder.Entity<Warehouses>(entity =>
             {
                 entity.HasKey(e => e.IdWarehouse);
 

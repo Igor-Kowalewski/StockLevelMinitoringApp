@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WindowsFormsApp1.Models;
-using WindowsFormsApp1.Dto;
 
 namespace WindowsFormsApp1.Service.PersonService
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsFormsApp1.Data;
+using FormUI.Data;
 
 namespace WindowsFormsApp1.Repository
 {

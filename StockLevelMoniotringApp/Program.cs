@@ -6,15 +6,14 @@ using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WindowsFormsApp1.Data;
-using WindowsFormsApp1.Models;
 using WindowsFormsApp1.Repository;
-using WindowsFormsApp1.Service.TypeOfCarService;
 using WindowsFormsApp1.Service.PersonService;
+using FormUI.Data;
+using WindowsFormsApp1;
 
 namespace WindowsFormsApp1
 {
-    static class Program
+    public static class Program
     {
         public static IConfigurationRoot Configuration { get; private set; }
 

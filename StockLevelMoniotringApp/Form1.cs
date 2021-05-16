@@ -32,9 +32,9 @@ namespace WindowsFormsApp1
         /// <param name="e"></param>
         private void button1_Click_1(object sender, EventArgs e)
         {
-            var value = _PersonService.GetPersonById(int.Parse(textBox1.Text));
-            Console.WriteLine(value.IdPeople);
-            LBtotal.Text = value.IdPeople +" "+ value.Name  + " " + value.Surename + " "+ value.Pesel +" "+ value.Job ;
+            //var value = _PersonService.GetPersonById(int.Parse(textBox1.Text));
+            //Console.WriteLine(value.IdPeople);
+            //LBtotal.Text = value.IdPeople +" "+ value.Name  + " " + value.Surename + " "+ value.Pesel +" "+ value.Job ;
         }
 
 

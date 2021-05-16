@@ -3,16 +3,17 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace WindowsFormsApp1.Models
+namespace FormUI.Models
 {
-    public partial class Item
+    public partial class Products
     {
-        public Item()
+        public Products()
         {
-            Orders = new HashSet<Order>();
+            OrderDetails = new HashSet<OrdersDetails>();
         }
 
         public int IdItem { get; set; }
+        public string Name { get; set; }
         public double Height { get; set; }
         public double Width { get; set; }
         public double Depth { get; set; }
@@ -21,8 +22,8 @@ namespace WindowsFormsApp1.Models
         public int? Location { get; set; }
         public int Category { get; set; }
 
-        public virtual Category CategoryNavigation { get; set; }
-        public virtual Warehouse LocationNavigation { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual Categories CategoryNavigation { get; set; }
+        public virtual Warehouses LocationNavigation { get; set; }
+        public virtual ICollection<OrdersDetails> OrderDetails { get; set; }
     }
 }
