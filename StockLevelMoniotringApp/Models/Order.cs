@@ -19,8 +19,8 @@ namespace FormUI.Models
         public decimal Subotal { get; set; }
         public string AdditionalInformations { get; set; }
         public int OrderAddressId { get; set; }
-        public int UserId { get; set; }
-        public int CompanyId { get; set; }
+        public int? UserId { get; set; }
+        public int? CompanyId { get; set; }
 
         [ForeignKey("OrderAddressId")]
         public virtual Address OrderAddress { get; set; }

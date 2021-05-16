@@ -18,7 +18,7 @@ namespace FormUI.Models
         public int WarehouseId { get; set; }
         public string WarehouseName { get; set; }
         public int AddressId { get; set; }
-        public int CompanyId { get; set; }
+        public int? CompanyId { get; set; }
 
         [ForeignKey("AddressId")]
         public virtual Address Address { get; set; }
