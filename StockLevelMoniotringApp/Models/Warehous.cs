@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -19,7 +20,10 @@ namespace FormUI.Models
         public int AddressId { get; set; }
         public int CompanyId { get; set; }
 
+        [ForeignKey("AddressId")]
         public virtual Address Address { get; set; }
+
+        [ForeignKey("CompanyId")]
         public virtual Company Company { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }
