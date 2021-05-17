@@ -21,7 +21,11 @@ namespace FormUI.Models
         public int OrderAddressId { get; set; }
         public int? UserId { get; set; }
         public int? CompanyId { get; set; }
+        public int OrderStatusId { get; set; }
 
+        [ForeignKey("OrderStatusId")]
+        public virtual OrderStatus OrderStatus { get; set; }
+        
         [ForeignKey("OrderAddressId")]
         public virtual Address OrderAddress { get; set; }
 

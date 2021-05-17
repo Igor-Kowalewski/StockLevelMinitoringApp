@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FormUI.Migrations
 {
     [DbContext(typeof(SimpleWarehousContext))]
-    [Migration("20210516190817_init")]
-    partial class init
+    [Migration("20210517175328_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,6 +83,21 @@ namespace FormUI.Migrations
                     b.ToTable("Companies");
                 });
 
+            modelBuilder.Entity("FormUI.Models.CompanyRole", b =>
+                {
+                    b.Property<int>("CompanyRoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("RoleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CompanyRoleId");
+
+                    b.ToTable("CompanyRole");
+                });
+
             modelBuilder.Entity("FormUI.Models.Order", b =>
                 {
                     b.Property<int>("OrderId")
@@ -99,6 +114,9 @@ namespace FormUI.Migrations
                     b.Property<int>("OrderAddressId")
                         .HasColumnType("int");
 
+                    b.Property<int>("OrderStatusId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Subotal")
                         .HasColumnType("decimal(18,2)");
 
@@ -110,6 +128,8 @@ namespace FormUI.Migrations
                     b.HasIndex("CompanyId");
 
                     b.HasIndex("OrderAddressId");
+
+                    b.HasIndex("OrderStatusId");
 
                     b.HasIndex("UserId");
 
@@ -129,9 +149,6 @@ namespace FormUI.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -139,9 +156,22 @@ namespace FormUI.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("ProductId");
-
                     b.ToTable("OrderItem");
+                });
+
+            modelBuilder.Entity("FormUI.Models.OrderStatus", b =>
+                {
+                    b.Property<int>("OrderStatusId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("StatusName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("OrderStatusId");
+
+                    b.ToTable("OrderStatus");
                 });
 
             modelBuilder.Entity("FormUI.Models.Product", b =>
@@ -163,14 +193,9 @@ namespace FormUI.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int?>("WarehouseId")
-                        .HasColumnType("int");
-
                     b.HasKey("ProductId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("WarehouseId");
 
                     b.ToTable("Produts");
                 });
@@ -186,6 +211,9 @@ namespace FormUI.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompanyRoleId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -208,6 +236,8 @@ namespace FormUI.Migrations
                     b.HasIndex("AddressId");
 
                     b.HasIndex("CompanyId");
+
+                    b.HasIndex("CompanyRoleId");
 
                     b.ToTable("Users");
                 });
@@ -237,6 +267,34 @@ namespace FormUI.Migrations
                     b.ToTable("Warehouses");
                 });
 
+            modelBuilder.Entity("FormUI.Models.WarehousProduct", b =>
+                {
+                    b.Property<int>("WarehouseProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WarehousId")
+                        .HasColumnType("int");
+
+                    b.HasKey("WarehouseProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("WarehousId");
+
+                    b.ToTable("WarehousProduct");
+                });
+
             modelBuilder.Entity("FormUI.Models.Company", b =>
                 {
                     b.HasOne("FormUI.Models.Address", "Address")
@@ -260,6 +318,12 @@ namespace FormUI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("FormUI.Models.OrderStatus", "OrderStatus")
+                        .WithMany()
+                        .HasForeignKey("OrderStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("FormUI.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
@@ -267,6 +331,8 @@ namespace FormUI.Migrations
                     b.Navigation("Company");
 
                     b.Navigation("OrderAddress");
+
+                    b.Navigation("OrderStatus");
 
                     b.Navigation("User");
                 });
@@ -279,15 +345,7 @@ namespace FormUI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FormUI.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Order");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("FormUI.Models.Product", b =>
@@ -298,13 +356,7 @@ namespace FormUI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FormUI.Models.Warehous", "Warehouse")
-                        .WithMany("Products")
-                        .HasForeignKey("WarehouseId");
-
                     b.Navigation("Category");
-
-                    b.Navigation("Warehouse");
                 });
 
             modelBuilder.Entity("FormUI.Models.User", b =>
@@ -319,7 +371,15 @@ namespace FormUI.Migrations
                         .WithMany("Users")
                         .HasForeignKey("CompanyId");
 
+                    b.HasOne("FormUI.Models.CompanyRole", "CompanyRole")
+                        .WithMany()
+                        .HasForeignKey("CompanyRoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Address");
+
+                    b.Navigation("CompanyRole");
                 });
 
             modelBuilder.Entity("FormUI.Models.Warehous", b =>
@@ -337,6 +397,23 @@ namespace FormUI.Migrations
                     b.Navigation("Address");
 
                     b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("FormUI.Models.WarehousProduct", b =>
+                {
+                    b.HasOne("FormUI.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FormUI.Models.Warehous", "Warehous")
+                        .WithMany("WarehousProducts")
+                        .HasForeignKey("WarehousId");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Warehous");
                 });
 
             modelBuilder.Entity("FormUI.Models.Category", b =>
@@ -358,7 +435,7 @@ namespace FormUI.Migrations
 
             modelBuilder.Entity("FormUI.Models.Warehous", b =>
                 {
-                    b.Navigation("Products");
+                    b.Navigation("WarehousProducts");
                 });
 #pragma warning restore 612, 618
         }

@@ -2,7 +2,7 @@
 
 namespace FormUI.Migrations
 {
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -36,6 +36,32 @@ namespace FormUI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CompanyRole",
+                columns: table => new
+                {
+                    CompanyRoleId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CompanyRole", x => x.CompanyRoleId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderStatus",
+                columns: table => new
+                {
+                    OrderStatusId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StatusName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderStatus", x => x.OrderStatusId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Companies",
                 columns: table => new
                 {
@@ -57,6 +83,28 @@ namespace FormUI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Produts",
+                columns: table => new
+                {
+                    ProductId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Produts", x => x.ProductId);
+                    table.ForeignKey(
+                        name: "FK_Produts_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -68,6 +116,7 @@ namespace FormUI.Migrations
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressId = table.Column<int>(type: "int", nullable: false),
+                    CompanyRoleId = table.Column<int>(type: "int", nullable: false),
                     CompanyId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -85,6 +134,12 @@ namespace FormUI.Migrations
                         principalTable: "Companies",
                         principalColumn: "CompanyId",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Users_CompanyRole_CompanyRoleId",
+                        column: x => x.CompanyRoleId,
+                        principalTable: "CompanyRole",
+                        principalColumn: "CompanyRoleId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -124,7 +179,8 @@ namespace FormUI.Migrations
                     AdditionalInformations = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     OrderAddressId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: true),
-                    CompanyId = table.Column<int>(type: "int", nullable: true)
+                    CompanyId = table.Column<int>(type: "int", nullable: true),
+                    OrderStatusId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -142,6 +198,12 @@ namespace FormUI.Migrations
                         principalColumn: "CompanyId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
+                        name: "FK_Orders_OrderStatus_OrderStatusId",
+                        column: x => x.OrderStatusId,
+                        principalTable: "OrderStatus",
+                        principalColumn: "OrderStatusId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Orders_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
@@ -150,29 +212,28 @@ namespace FormUI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Produts",
+                name: "WarehousProduct",
                 columns: table => new
                 {
-                    ProductId = table.Column<int>(type: "int", nullable: false)
+                    WarehouseProductId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<double>(type: "float", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    WarehouseId = table.Column<int>(type: "int", nullable: true),
-                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    WarehousId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Produts", x => x.ProductId);
+                    table.PrimaryKey("PK_WarehousProduct", x => x.WarehouseProductId);
                     table.ForeignKey(
-                        name: "FK_Produts_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "CategoryId",
+                        name: "FK_WarehousProduct_Produts_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Produts",
+                        principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Produts_Warehouses_WarehouseId",
-                        column: x => x.WarehouseId,
+                        name: "FK_WarehousProduct_Warehouses_WarehousId",
+                        column: x => x.WarehousId,
                         principalTable: "Warehouses",
                         principalColumn: "WarehouseId",
                         onDelete: ReferentialAction.Restrict);
@@ -186,7 +247,6 @@ namespace FormUI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
                     OrderId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -197,12 +257,6 @@ namespace FormUI.Migrations
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "OrderId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_OrderItem_Produts_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Produts",
-                        principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -217,11 +271,6 @@ namespace FormUI.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItem_ProductId",
-                table: "OrderItem",
-                column: "ProductId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Orders_CompanyId",
                 table: "Orders",
                 column: "CompanyId");
@@ -230,6 +279,11 @@ namespace FormUI.Migrations
                 name: "IX_Orders_OrderAddressId",
                 table: "Orders",
                 column: "OrderAddressId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_OrderStatusId",
+                table: "Orders",
+                column: "OrderStatusId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_UserId",
@@ -242,11 +296,6 @@ namespace FormUI.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Produts_WarehouseId",
-                table: "Produts",
-                column: "WarehouseId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Users_AddressId",
                 table: "Users",
                 column: "AddressId");
@@ -257,6 +306,11 @@ namespace FormUI.Migrations
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Users_CompanyRoleId",
+                table: "Users",
+                column: "CompanyRoleId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Warehouses_AddressId",
                 table: "Warehouses",
                 column: "AddressId");
@@ -265,6 +319,16 @@ namespace FormUI.Migrations
                 name: "IX_Warehouses_CompanyId",
                 table: "Warehouses",
                 column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WarehousProduct_ProductId",
+                table: "WarehousProduct",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WarehousProduct_WarehousId",
+                table: "WarehousProduct",
+                column: "WarehousId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -273,10 +337,19 @@ namespace FormUI.Migrations
                 name: "OrderItem");
 
             migrationBuilder.DropTable(
+                name: "WarehousProduct");
+
+            migrationBuilder.DropTable(
                 name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Produts");
+
+            migrationBuilder.DropTable(
+                name: "Warehouses");
+
+            migrationBuilder.DropTable(
+                name: "OrderStatus");
 
             migrationBuilder.DropTable(
                 name: "Users");
@@ -285,10 +358,10 @@ namespace FormUI.Migrations
                 name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Warehouses");
+                name: "Companies");
 
             migrationBuilder.DropTable(
-                name: "Companies");
+                name: "CompanyRole");
 
             migrationBuilder.DropTable(
                 name: "Adresses");

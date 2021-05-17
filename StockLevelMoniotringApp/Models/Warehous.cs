@@ -11,7 +11,7 @@ namespace FormUI.Models
     {
         public Warehous()
         {
-            Products = new HashSet<Product>();
+            WarehousProducts = new HashSet<WarehousProduct>();
         }
 
         [Key]
@@ -25,6 +25,6 @@ namespace FormUI.Models
 
         [ForeignKey("CompanyId")]
         public virtual Company Company { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<WarehousProduct> WarehousProducts { get; set; }
     }
 }
