@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FormUI.Migrations
 {
     [DbContext(typeof(SimpleWarehousContext))]
-    [Migration("20210517175328_Init")]
-    partial class Init
+    [Migration("20210518223249_WstepnaBazaDanych")]
+    partial class WstepnaBazaDanych
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -138,12 +138,10 @@ namespace FormUI.Migrations
 
             modelBuilder.Entity("FormUI.Models.OrderItem", b =>
                 {
-                    b.Property<int>("OrderItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
@@ -152,9 +150,9 @@ namespace FormUI.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("OrderItemId");
+                    b.HasKey("OrderId", "ProductId");
 
-                    b.HasIndex("OrderId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("OrderItem");
                 });
@@ -345,7 +343,15 @@ namespace FormUI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("FormUI.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Order");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("FormUI.Models.Product", b =>

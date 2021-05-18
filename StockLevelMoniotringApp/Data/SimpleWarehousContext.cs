@@ -43,6 +43,8 @@ namespace FormUI.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             OnModelCreatingPartial(modelBuilder);
+            modelBuilder.Entity<OrderItem>()
+                .HasKey(o => new { o.OrderId, o.ProductId });
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

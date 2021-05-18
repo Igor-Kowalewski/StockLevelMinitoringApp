@@ -8,13 +8,17 @@ namespace FormUI.Models
 {
     public partial class OrderItem
     {
-        [Key]
-        public int OrderItemId { get; set; }
+        [Key, Column(Order = 0)]
+        public int OrderId { get; set; }
+        [Key, Column(Order = 1)]
+        public int ProductId { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
-        public int OrderId { get; set; }
 
         [ForeignKey("OrderId")]
         public virtual Order Order { get; set; }
+
+        [ForeignKey("ProductId")]
+        public virtual Product Product { get; set; }
     }
 }

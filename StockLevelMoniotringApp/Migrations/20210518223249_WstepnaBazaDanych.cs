@@ -2,7 +2,7 @@
 
 namespace FormUI.Migrations
 {
-    public partial class Init : Migration
+    public partial class WstepnaBazaDanych : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -243,20 +243,25 @@ namespace FormUI.Migrations
                 name: "OrderItem",
                 columns: table => new
                 {
-                    OrderItemId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    OrderId = table.Column<int>(type: "int", nullable: false)
+                    Quantity = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderItem", x => x.OrderItemId);
+                    table.PrimaryKey("PK_OrderItem", x => new { x.OrderId, x.ProductId });
                     table.ForeignKey(
                         name: "FK_OrderItem_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "OrderId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderItem_Produts_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Produts",
+                        principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -266,9 +271,9 @@ namespace FormUI.Migrations
                 column: "AddressId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItem_OrderId",
+                name: "IX_OrderItem_ProductId",
                 table: "OrderItem",
-                column: "OrderId");
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_CompanyId",

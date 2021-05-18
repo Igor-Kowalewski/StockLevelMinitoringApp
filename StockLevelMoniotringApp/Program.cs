@@ -28,11 +28,10 @@ namespace WindowsFormsApp1
             RegisterServie(services);
 
             //zbudowanie dostawcy
-            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
-            {
-                var form1 = serviceProvider.GetRequiredService<Form1>();
-                Application.Run(form1);
-            }
+            using ServiceProvider serviceProvider = services.BuildServiceProvider();
+                var mainForm = serviceProvider.GetRequiredService<MainForm>();
+                mainForm.Show();
+                Application.Run();
         }
 
         private static void RegisterServie(IServiceCollection services)
@@ -44,7 +43,7 @@ namespace WindowsFormsApp1
             .Build();
 
             // wstrzykniêcie zale¿noœci DI
-            services.AddSingleton<Form1>();
+            services.AddSingleton<MainForm>();
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddTransient<IPersonService,PersonService>();
             services.AddDbContext<SimpleWarehousContext>(option => option.UseSqlServer(Configuration.GetConnectionString("SimpleWarehous")));
