@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FormUI.Services.PdfService;
 using FormUI.Views;
 using WindowsFormsApp1.Service.PersonService;
 
@@ -70,6 +71,12 @@ namespace WindowsFormsApp1
             CustomersForm customersForm = new CustomersForm { MainFormReference = this };
             this.Hide();
             customersForm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GeneratePDF pdf = new GeneratePDF();
+            pdf.ExportPDF();
         }
     }
 }
