@@ -10,6 +10,8 @@ using WindowsFormsApp1.Repository;
 using WindowsFormsApp1.Service.PersonService;
 using FormUI.Data;
 using WindowsFormsApp1;
+using FormUI.Views;
+using WindowsFormsApp1.Service.CategoryService;
 
 namespace WindowsFormsApp1
 {
@@ -44,8 +46,10 @@ namespace WindowsFormsApp1
 
             // wstrzykniêcie zale¿noœci DI
             services.AddSingleton<MainForm>();
+            services.AddSingleton<CategoriesForm>();
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddTransient<IPersonService,PersonService>();
+            services.AddTransient<ICategoryService,CategoryService>();
             services.AddDbContext<SimpleWarehousContext>(option => option.UseSqlServer(Configuration.GetConnectionString("SimpleWarehous")));
         }
     }

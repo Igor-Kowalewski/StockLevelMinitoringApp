@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FormUI.Data;
 using FormUI.Views;
+using WindowsFormsApp1.Service.CategoryService;
 using WindowsFormsApp1.Service.PersonService;
 
 namespace WindowsFormsApp1
 {
     public partial class MainForm : Form
     {
-        private IPersonService _PersonService;
+        private readonly IPersonService _PersonService;
+        private readonly ICategoryService categoryService;
 
         /// <summary>
         /// Dzięki DI w klasie program mamy uzupęłnione serwisy
@@ -70,6 +73,13 @@ namespace WindowsFormsApp1
             CustomersForm customersForm = new CustomersForm { MainFormReference = this };
             this.Hide();
             customersForm.Show();
+        }
+
+        private void CategoriesButton_Click(object sender, EventArgs e)
+        {
+            CategoriesForm categoriesForm = new CategoriesForm(categoryService, this);
+            this.Hide();
+            categoriesForm.Show();
         }
     }
 }

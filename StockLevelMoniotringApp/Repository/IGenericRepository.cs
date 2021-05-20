@@ -9,6 +9,7 @@ namespace WindowsFormsApp1.Repository
     {
         Entity GetEntityById(int id);
         void AddEntity(Entity entity);
-
+        // public IEnumerable<Entity> GetAllEntities(Entity entity);
+        void RemoveEntity(Entity entity);
     }
 }

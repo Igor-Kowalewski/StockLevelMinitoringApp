@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,20 @@ namespace WindowsFormsApp1.Repository
 
         public void AddEntity(Entity entity)
         {
-            var result = simpleWarehousContext.Set<Entity>().Add(entity);
+            simpleWarehousContext.Set<Entity>().Add(entity);
+            simpleWarehousContext.SaveChanges();
+        }
+
+        //public List<Entity> GetAllEntities(Entity entity)
+        //{
+        //    entity = from c in simpleWarehousContext.Categories select c;
+        //   // List < Entity > result = simpleWarehousContext;
+        //    return result;
+        //}
+
+        public void RemoveEntity(Entity entity)
+        {
+            simpleWarehousContext.Set<Entity>().Remove(entity);
             simpleWarehousContext.SaveChanges();
         }
 
