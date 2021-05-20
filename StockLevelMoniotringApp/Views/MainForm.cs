@@ -11,6 +11,7 @@ using FormUI.Data;
 using FormUI.Views;
 using WindowsFormsApp1.Service.CategoryService;
 using WindowsFormsApp1.Service.PersonService;
+using WindowsFormsApp1.Service.ProductService;
 
 namespace WindowsFormsApp1
 {
@@ -18,6 +19,7 @@ namespace WindowsFormsApp1
     {
         private readonly IPersonService _PersonService;
         private readonly ICategoryService categoryService;
+        private readonly IProductService productService;
 
         /// <summary>
         /// Dzięki DI w klasie program mamy uzupęłnione serwisy
@@ -63,9 +65,9 @@ namespace WindowsFormsApp1
 
         private void ProductsButton_Click(object sender, EventArgs e)
         {
-            CustomersForm customersForm = new CustomersForm { MainFormReference = this };
+            ProductsForm productsForm = new ProductsForm(productService, this);
             this.Hide();
-            customersForm.Show();
+            productsForm.Show();
         }
 
         private void OrdersButton_Click(object sender, EventArgs e)
