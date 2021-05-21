@@ -179,6 +179,7 @@
             this.Controls.Add(this.WarehousesRefresh);
             this.Controls.Add(this.WarehousesGridView);
             this.Name = "WarehousesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WarehousesForm";
             ((System.ComponentModel.ISupportInitialize)(this.WarehousesGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WarehousesAddAddress)).EndInit();
