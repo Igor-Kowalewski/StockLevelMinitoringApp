@@ -42,6 +42,7 @@ namespace FormUI.Views
             this.ProductsAddDesc = new System.Windows.Forms.RichTextBox();
             this.ProductsAddPrice = new System.Windows.Forms.NumericUpDown();
             this.ProductsAddCat = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsAddPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsAddCat)).BeginInit();
@@ -156,7 +157,7 @@ namespace FormUI.Views
             // ProductsAddCat
             // 
             this.ProductsAddCat.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.ProductsAddCat.Location = new System.Drawing.Point(477, 582);
+            this.ProductsAddCat.Location = new System.Drawing.Point(477, 596);
             this.ProductsAddCat.Maximum = new decimal(new int[] {
             5,
             0,
@@ -166,11 +167,21 @@ namespace FormUI.Views
             this.ProductsAddCat.Size = new System.Drawing.Size(120, 23);
             this.ProductsAddCat.TabIndex = 9;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(481, 578);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 15);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Category ID:";
+            // 
             // ProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.ProductsAddCat);
             this.Controls.Add(this.ProductsAddPrice);
             this.Controls.Add(this.ProductsAddDesc);
@@ -217,5 +228,6 @@ namespace FormUI.Views
         private System.Windows.Forms.RichTextBox ProductsAddDesc;
         private System.Windows.Forms.NumericUpDown ProductsAddPrice;
         private System.Windows.Forms.NumericUpDown ProductsAddCat;
+        private System.Windows.Forms.Label label4;
     }
 }

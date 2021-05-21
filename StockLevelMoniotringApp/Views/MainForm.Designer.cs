@@ -33,6 +33,7 @@
             this.productsButton = new System.Windows.Forms.Button();
             this.ordersButton = new System.Windows.Forms.Button();
             this.CategoriesButton = new System.Windows.Forms.Button();
+            this.WarehousesButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -84,11 +85,22 @@
             this.CategoriesButton.UseVisualStyleBackColor = true;
             this.CategoriesButton.Click += new System.EventHandler(this.CategoriesButton_Click);
             // 
+            // WarehousesButton
+            // 
+            this.WarehousesButton.Location = new System.Drawing.Point(12, 276);
+            this.WarehousesButton.Name = "WarehousesButton";
+            this.WarehousesButton.Size = new System.Drawing.Size(184, 60);
+            this.WarehousesButton.TabIndex = 5;
+            this.WarehousesButton.Text = "Warehouses";
+            this.WarehousesButton.UseVisualStyleBackColor = true;
+            this.WarehousesButton.Click += new System.EventHandler(this.WarehousesButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.WarehousesButton);
             this.Controls.Add(this.CategoriesButton);
             this.Controls.Add(this.ordersButton);
             this.Controls.Add(this.productsButton);
@@ -116,5 +128,6 @@
         private System.Windows.Forms.Button productsButton;
         private System.Windows.Forms.Button ordersButton;
         private System.Windows.Forms.Button CategoriesButton;
+        private System.Windows.Forms.Button WarehousesButton;
     }
 }

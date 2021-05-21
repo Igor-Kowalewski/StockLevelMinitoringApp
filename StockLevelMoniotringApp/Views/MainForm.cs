@@ -12,6 +12,7 @@ using FormUI.Views;
 using WindowsFormsApp1.Service.CategoryService;
 using WindowsFormsApp1.Service.PersonService;
 using WindowsFormsApp1.Service.ProductService;
+using WindowsFormsApp1.Service.WarehouseService;
 
 namespace WindowsFormsApp1
 {
@@ -20,6 +21,7 @@ namespace WindowsFormsApp1
         private readonly IPersonService _PersonService;
         private readonly ICategoryService categoryService;
         private readonly IProductService productService;
+        private readonly IWarehouseService warehouseService;
 
         /// <summary>
         /// Dzięki DI w klasie program mamy uzupęłnione serwisy
@@ -82,6 +84,13 @@ namespace WindowsFormsApp1
             CategoriesForm categoriesForm = new CategoriesForm(categoryService, this);
             this.Hide();
             categoriesForm.Show();
+        }
+
+        private void WarehousesButton_Click(object sender, EventArgs e)
+        {
+            WarehousesForm warehousesForm = new WarehousesForm(warehouseService, this);
+            this.Hide();
+            warehousesForm.Show();
         }
     }
 }
