@@ -23,6 +23,7 @@ namespace WindowsFormsApp1
         private readonly IProductService productService;
         private readonly IWarehouseService warehouseService;
 
+
         /// <summary>
         /// Dzięki DI w klasie program mamy uzupęłnione serwisy
         /// </summary>
@@ -31,6 +32,30 @@ namespace WindowsFormsApp1
         {
             _PersonService = personService;
             InitializeComponent();
+            RefreshData();
+        }
+
+
+        public string Username { get; set; }
+        public void SetUsername(string username)
+        {
+            Username = username;
+            userLabel.Text = "User: " + Username;
+            userLabel.Visible = true;
+        }
+
+        private void RefreshData()
+        {
+            var DBContext = new SimpleWarehousContext();
+            var products = DBContext.Produts.ToList();
+            productsGridView.DataSource = products;
+            productsGridView.Columns[0].Visible = false;
+            productsGridView.Columns[4].Visible = false;
+        }
+
+        private void MainForm_VisibleChanged(object sender, EventArgs e)
+        {
+            RefreshData();
         }
 
         //Testowa metoda
@@ -92,5 +117,7 @@ namespace WindowsFormsApp1
             this.Hide();
             warehousesForm.Show();
         }
+
     }
+
 }

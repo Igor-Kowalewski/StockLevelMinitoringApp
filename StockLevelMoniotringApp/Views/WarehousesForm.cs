@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using FormUI.Data;
 using FormUI.Models;
+using WindowsFormsApp1;
 using WindowsFormsApp1.Service.WarehouseService;
 
 namespace FormUI.Views
@@ -11,14 +12,15 @@ namespace FormUI.Views
     public partial class WarehousesForm : Form
     {
         public IWarehouseService WarehouseService { get; set; }
-        public Form MainFormReference { get; set; }
+        public MainForm MainFormReference { get; set; }
 
         public WarehousesForm(IWarehouseService WarehouseService, Form MainFormReference)
         {
             this.WarehouseService = WarehouseService;
-            this.MainFormReference = MainFormReference;
+            this.MainFormReference = (MainForm)MainFormReference;
 
             InitializeComponent();
+            RefreshData();
 
             this.FormClosed +=
                 new System.Windows.Forms.FormClosedEventHandler(this.WarehousesForm_FormClosed);
@@ -31,17 +33,15 @@ namespace FormUI.Views
 
         private void WarehousesRefresh_Click(object sender, EventArgs e)
         {
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
             var DBContext = new SimpleWarehousContext();
             var Warehouses = DBContext.Warehouses.ToList();
-            WarehousesGridView.DataSource = Warehouses;
-
-            var stringlist = new List<String>();
-
-            foreach (var item in Warehouses)
-            {
-                stringlist.Add(item.WarehouseId + " " + item.WarehouseName);
-            }
-            WarehousesListBox.DataSource = stringlist;
+            warehousesGridView.DataSource = Warehouses;
+            warehousesGridView.Columns[0].Visible = false;
         }
 
         private void WarehousesAdd_Click(object sender, EventArgs e)
@@ -53,6 +53,7 @@ namespace FormUI.Views
             DBContext.Warehouses.Add(temp);
             DBContext.SaveChanges();
 
+            RefreshData();
         }
 
         private void WarehousesDelete_Click(object sender, EventArgs e)
@@ -60,13 +61,15 @@ namespace FormUI.Views
             var DBContext = new SimpleWarehousContext();
 
             Warehous temp = new Warehous();
-            foreach (DataGridViewRow row in WarehousesGridView.SelectedRows)
+            foreach (DataGridViewRow row in warehousesGridView.SelectedRows)
             {
                 MessageBox.Show("USUWANIE: Index " + row.Index.ToString() + " ID: " + row.Cells[0].Value.ToString());
                 temp.WarehouseId = (int)row.Cells[0].Value;
                 DBContext.Warehouses.Remove(temp);
                 DBContext.SaveChanges();
             }
+
+            RefreshData();
         }
     }
 }

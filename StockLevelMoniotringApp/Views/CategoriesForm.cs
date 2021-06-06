@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using FormUI.Data;
 using FormUI.Models;
+using WindowsFormsApp1;
 using WindowsFormsApp1.Service.CategoryService;
 
 namespace FormUI.Views
@@ -11,14 +12,16 @@ namespace FormUI.Views
     public partial class CategoriesForm : Form
     {
         public ICategoryService CategoryService { get; set; }
-        public Form MainFormReference { get; set; }
+        public MainForm MainFormReference { get; set; }
 
         public CategoriesForm(ICategoryService categoryService, Form MainFormReference)
         {
             this.CategoryService = categoryService;
-            this.MainFormReference = MainFormReference;
+            this.MainFormReference = (MainForm)MainFormReference;
 
             InitializeComponent();
+            RefreshData();
+
             this.FormClosed +=
                 new System.Windows.Forms.FormClosedEventHandler(this.CategoriesForm_FormClosed);
         }
@@ -31,17 +34,8 @@ namespace FormUI.Views
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            var DBContext = new SimpleWarehousContext();
-            var categories = DBContext.Categories.ToList();
-            categoriesGridView.DataSource = categories;
-
-
-            var stringlist= new List<String>();
-            foreach (var item in categories)
-            {
-                stringlist.Add(item.CategoryId + " " + item.Name);
-            }
-            listBox1.DataSource = stringlist;
+            RefreshData();
+            //listBox1.DataSource = stringlist;
 
 
             // NIE DZIAŁA SERVICE !!!
@@ -56,6 +50,22 @@ namespace FormUI.Views
             //listBox1.DataSource = CategoryService.GetAllCategories();
         }
 
+        private void RefreshData()
+        {
+            var DBContext = new SimpleWarehousContext();
+            var categories = DBContext.Categories.ToList();
+            categoriesGridView.DataSource = categories;
+            categoriesGridView.Columns[0].Visible = false;
+            categoriesGridView.Columns[2].Visible = false;
+
+
+            //var stringlist= new List<String>(); // LISTA STRING
+            //foreach (var item in categories)
+            //{
+            //    stringlist.Add(item.CategoryId + " " + item.Name);
+            //}
+        }
+
         private void AddCategoryButton_Click(object sender, EventArgs e)
         {
             var DBContext = new SimpleWarehousContext();
@@ -64,6 +74,8 @@ namespace FormUI.Views
 
             DBContext.Categories.Add(temp);
             DBContext.SaveChanges();
+
+            RefreshData();
         }
 
         private void DeleteCategoryButton_Click(object sender, EventArgs e)
@@ -78,6 +90,8 @@ namespace FormUI.Views
                 DBContext.Categories.Remove(temp);
                 DBContext.SaveChanges();
             }
+
+            RefreshData();
         }
     }
 }

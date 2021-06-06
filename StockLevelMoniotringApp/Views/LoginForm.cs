@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsApp1;
 
 namespace FormUI.Views
 {
@@ -17,7 +18,7 @@ namespace FormUI.Views
                new System.Windows.Forms.FormClosedEventHandler(this.LoginForm_FormClosed);
         }
 
-        public Form MainFormReference { get; set; }
+        public MainForm MainFormReference { get; set; }
 
         private void LoginForm_Shown(object sender, EventArgs e)
         {
@@ -34,7 +35,9 @@ namespace FormUI.Views
             if (loginTextBox.Text == "admin" && passwordTextBox.Text == "admin") // TODO - TUTAJ DODAĆ LEPSZĄ WALIDACJĘ UŻYTKOWNIKÓW -> HASZOWANIE HASEŁ I POBIERANIE Z BAZY DANYCH  - IGOR KOWALEWSKI
             {
                 this.MainFormReference.Activate();
+                this.MainFormReference.SetUsername(loginTextBox.Text);
                 this.MainFormReference.Enabled = true;
+
                 this.Dispose();
             }
             else

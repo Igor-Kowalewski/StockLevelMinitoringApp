@@ -8,6 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Remove="Dto\**" />
+    <EmbeddedResource Remove="Dto\**" />
+    <None Remove="Dto\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+=======
+>>>>>>> 797cad643e9bcba066fd937af93222a7e2ea83e0
     <PackageReference Include="itext7" Version="7.1.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5">
@@ -23,8 +32,11 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
   </ItemGroup>
 
+<<<<<<< HEAD
+=======
   <ItemGroup>
     <Folder Include="Dto\" />
   </ItemGroup>
 
+>>>>>>> 797cad643e9bcba066fd937af93222a7e2ea83e0
 </Project>
