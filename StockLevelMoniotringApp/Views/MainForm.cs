@@ -99,7 +99,7 @@ namespace WindowsFormsApp1
 
         private void OrdersButton_Click(object sender, EventArgs e)
         {
-            CustomersForm customersForm = new CustomersForm { MainFormReference = this };
+            OrdersForm customersForm = new OrdersForm { MainFormReference = this };
             this.Hide();
             customersForm.Show();
         }

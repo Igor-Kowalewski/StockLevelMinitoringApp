@@ -20,6 +20,7 @@ namespace FormUI.Views
             this.MainFormReference = (MainForm)MainFormReference;
 
             InitializeComponent();
+            ProductsAddPrice.Controls[0].Visible = false;
             this.FormClosed +=
                 new System.Windows.Forms.FormClosedEventHandler(this.ProductsForm_FormClosed);
 

@@ -42,6 +42,8 @@ namespace FormUI.Views
             var Warehouses = DBContext.Warehouses.ToList();
             warehousesGridView.DataSource = Warehouses;
             warehousesGridView.Columns[0].Visible = false;
+            warehousesGridView.Columns[2].Visible = false;
+            warehousesGridView.Columns[3].Visible = false;
         }
 
         private void WarehousesAdd_Click(object sender, EventArgs e)
