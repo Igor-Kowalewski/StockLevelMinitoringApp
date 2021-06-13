@@ -19,6 +19,7 @@ namespace FormUI.Views
 
             this.FormClosed +=
                 new System.Windows.Forms.FormClosedEventHandler(this.CustomersForm_FormClosed);
+            PopulateIdList();
         }
 
         private void CustomersForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -46,7 +47,8 @@ namespace FormUI.Views
         {
             var DBContext = new SimpleWarehousContext();
 
-            User temp = new User {Name = NameBox.Text, Surename = SurnameBox.Text, Phone = PhoneBox.Text, Email = EmailBox.Text, AddressId = (int)AddressID.Value, CompanyRoleId= (int)CompanyRoleID.Value};
+            CompanyRole tempRole = (CompanyRole)CompanyRoleId.SelectedItem;
+            User temp = new User {Name = NameBox.Text, Surename = SurnameBox.Text, Phone = PhoneBox.Text, Email = EmailBox.Text, AddressId = 1, CompanyRoleId= 1 /* do naprawienia*/};
             MessageBox.Show("Dodawanie klienta " + NameBox.Text);
             DBContext.Users.Add(temp);
             DBContext.SaveChanges();
@@ -68,6 +70,18 @@ namespace FormUI.Views
             }
 
             RefreshData();
+        }
+
+        private void PopulateIdList()
+        {
+            var DBContext = new SimpleWarehousContext();
+            //DO NAPRAWIENIA
+            //var roles = DBContext.CompanyRole.ToList();
+            //CompanyRoleId.DataSource = roles;
+
+            CompanyRoleId.DisplayMember = "RoleName";
+            CompanyRoleId.ValueMember = "CompanyRoleId";
+
         }
     }
 }

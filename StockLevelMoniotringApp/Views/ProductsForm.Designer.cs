@@ -39,13 +39,12 @@ namespace FormUI.Views
             this.label3 = new System.Windows.Forms.Label();
             this.ProductsAddDesc = new System.Windows.Forms.RichTextBox();
             this.ProductsAddPrice = new System.Windows.Forms.NumericUpDown();
-            this.ProductsAddCat = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.menuPanel = new System.Windows.Forms.Panel();
             this.addProductGroupBox = new System.Windows.Forms.GroupBox();
+            this.ProductsAddCat = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsAddPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductsAddCat)).BeginInit();
             this.menuPanel.SuspendLayout();
             this.addProductGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -158,19 +157,6 @@ namespace FormUI.Views
             this.ProductsAddPrice.Size = new System.Drawing.Size(194, 25);
             this.ProductsAddPrice.TabIndex = 5;
             // 
-            // ProductsAddCat
-            // 
-            this.ProductsAddCat.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.ProductsAddCat.Location = new System.Drawing.Point(6, 247);
-            this.ProductsAddCat.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.ProductsAddCat.Name = "ProductsAddCat";
-            this.ProductsAddCat.Size = new System.Drawing.Size(194, 25);
-            this.ProductsAddCat.TabIndex = 9;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -197,10 +183,10 @@ namespace FormUI.Views
             // 
             // addProductGroupBox
             // 
+            this.addProductGroupBox.Controls.Add(this.ProductsAddCat);
             this.addProductGroupBox.Controls.Add(this.label1);
             this.addProductGroupBox.Controls.Add(this.ProductsAddName);
             this.addProductGroupBox.Controls.Add(this.label2);
-            this.addProductGroupBox.Controls.Add(this.ProductsAddCat);
             this.addProductGroupBox.Controls.Add(this.ProductsAddPrice);
             this.addProductGroupBox.Controls.Add(this.label4);
             this.addProductGroupBox.Controls.Add(this.label3);
@@ -213,6 +199,14 @@ namespace FormUI.Views
             this.addProductGroupBox.Size = new System.Drawing.Size(206, 294);
             this.addProductGroupBox.TabIndex = 1;
             this.addProductGroupBox.TabStop = false;
+            // 
+            // ProductsAddCat
+            // 
+            this.ProductsAddCat.FormattingEnabled = true;
+            this.ProductsAddCat.Location = new System.Drawing.Point(6, 256);
+            this.ProductsAddCat.Name = "ProductsAddCat";
+            this.ProductsAddCat.Size = new System.Drawing.Size(191, 25);
+            this.ProductsAddCat.TabIndex = 12;
             // 
             // ProductsForm
             // 
@@ -233,7 +227,6 @@ namespace FormUI.Views
             this.Text = "ProductsForm";
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsAddPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductsAddCat)).EndInit();
             this.menuPanel.ResumeLayout(false);
             this.addProductGroupBox.ResumeLayout(false);
             this.addProductGroupBox.PerformLayout();
@@ -253,9 +246,9 @@ namespace FormUI.Views
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox ProductsAddDesc;
         private System.Windows.Forms.NumericUpDown ProductsAddPrice;
-        private System.Windows.Forms.NumericUpDown ProductsAddCat;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel menuPanel;
         private System.Windows.Forms.GroupBox addProductGroupBox;
+        private System.Windows.Forms.ComboBox ProductsAddCat;
     }
 }

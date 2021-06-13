@@ -35,22 +35,18 @@ namespace FormUI.Views
             this.DeleteButton = new System.Windows.Forms.Button();
             this.InfoBox = new System.Windows.Forms.RichTextBox();
             this.SubtotalBox = new System.Windows.Forms.NumericUpDown();
-            this.AddressID = new System.Windows.Forms.NumericUpDown();
-            this.UserID = new System.Windows.Forms.NumericUpDown();
-            this.CompanyID = new System.Windows.Forms.NumericUpDown();
-            this.StatusID = new System.Windows.Forms.NumericUpDown();
             this.Subtotal = new System.Windows.Forms.Label();
             this.Information = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.AddressButton = new System.Windows.Forms.Button();
+            this.UserID = new System.Windows.Forms.ComboBox();
+            this.CompanyID = new System.Windows.Forms.ComboBox();
+            this.StatusID = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SubtotalBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AddressID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StatusID)).BeginInit();
             this.SuspendLayout();
             // 
             // OrdersGridView
@@ -107,34 +103,6 @@ namespace FormUI.Views
             this.SubtotalBox.Size = new System.Drawing.Size(160, 23);
             this.SubtotalBox.TabIndex = 5;
             // 
-            // AddressID
-            // 
-            this.AddressID.Location = new System.Drawing.Point(742, 301);
-            this.AddressID.Name = "AddressID";
-            this.AddressID.Size = new System.Drawing.Size(161, 23);
-            this.AddressID.TabIndex = 6;
-            // 
-            // UserID
-            // 
-            this.UserID.Location = new System.Drawing.Point(742, 356);
-            this.UserID.Name = "UserID";
-            this.UserID.Size = new System.Drawing.Size(161, 23);
-            this.UserID.TabIndex = 7;
-            // 
-            // CompanyID
-            // 
-            this.CompanyID.Location = new System.Drawing.Point(742, 409);
-            this.CompanyID.Name = "CompanyID";
-            this.CompanyID.Size = new System.Drawing.Size(164, 23);
-            this.CompanyID.TabIndex = 8;
-            // 
-            // StatusID
-            // 
-            this.StatusID.Location = new System.Drawing.Point(743, 461);
-            this.StatusID.Name = "StatusID";
-            this.StatusID.Size = new System.Drawing.Size(163, 23);
-            this.StatusID.TabIndex = 9;
-            // 
             // Subtotal
             // 
             this.Subtotal.AutoSize = true;
@@ -189,21 +157,54 @@ namespace FormUI.Views
             this.label6.TabIndex = 16;
             this.label6.Text = "Order Status ID";
             // 
+            // AddressButton
+            // 
+            this.AddressButton.Location = new System.Drawing.Point(742, 294);
+            this.AddressButton.Name = "AddressButton";
+            this.AddressButton.Size = new System.Drawing.Size(194, 23);
+            this.AddressButton.TabIndex = 17;
+            this.AddressButton.Text = "Wybierz adres";
+            this.AddressButton.UseVisualStyleBackColor = true;
+            // 
+            // UserID
+            // 
+            this.UserID.FormattingEnabled = true;
+            this.UserID.Location = new System.Drawing.Point(742, 356);
+            this.UserID.Name = "UserID";
+            this.UserID.Size = new System.Drawing.Size(121, 23);
+            this.UserID.TabIndex = 18;
+            // 
+            // CompanyID
+            // 
+            this.CompanyID.FormattingEnabled = true;
+            this.CompanyID.Location = new System.Drawing.Point(742, 400);
+            this.CompanyID.Name = "CompanyID";
+            this.CompanyID.Size = new System.Drawing.Size(121, 23);
+            this.CompanyID.TabIndex = 19;
+            // 
+            // StatusID
+            // 
+            this.StatusID.FormattingEnabled = true;
+            this.StatusID.Location = new System.Drawing.Point(742, 453);
+            this.StatusID.Name = "StatusID";
+            this.StatusID.Size = new System.Drawing.Size(121, 23);
+            this.StatusID.TabIndex = 20;
+            // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.StatusID);
+            this.Controls.Add(this.CompanyID);
+            this.Controls.Add(this.UserID);
+            this.Controls.Add(this.AddressButton);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Information);
             this.Controls.Add(this.Subtotal);
-            this.Controls.Add(this.StatusID);
-            this.Controls.Add(this.CompanyID);
-            this.Controls.Add(this.UserID);
-            this.Controls.Add(this.AddressID);
             this.Controls.Add(this.SubtotalBox);
             this.Controls.Add(this.InfoBox);
             this.Controls.Add(this.DeleteButton);
@@ -222,10 +223,6 @@ namespace FormUI.Views
             this.Text = "OrdersForm";
             ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SubtotalBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AddressID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StatusID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,15 +236,15 @@ namespace FormUI.Views
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.RichTextBox InfoBox;
         private System.Windows.Forms.NumericUpDown SubtotalBox;
-        private System.Windows.Forms.NumericUpDown AddressID;
-        private System.Windows.Forms.NumericUpDown UserID;
-        private System.Windows.Forms.NumericUpDown CompanyID;
-        private System.Windows.Forms.NumericUpDown StatusID;
         private System.Windows.Forms.Label Subtotal;
         private System.Windows.Forms.Label Information;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button AddressButton;
+        private System.Windows.Forms.ComboBox UserID;
+        private System.Windows.Forms.ComboBox CompanyID;
+        private System.Windows.Forms.ComboBox StatusID;
     }
 }

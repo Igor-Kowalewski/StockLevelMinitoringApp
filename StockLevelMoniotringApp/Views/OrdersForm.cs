@@ -20,6 +20,7 @@ namespace FormUI.Views
             SubtotalBox.Controls[0].Visible = false;
             this.FormClosed +=
                 new System.Windows.Forms.FormClosedEventHandler(this.OrdersForm_FormClosed);
+            PopulateIdList();
         }
 
         private void OrdersForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -49,7 +50,10 @@ namespace FormUI.Views
         {
             var DBContext = new SimpleWarehousContext();
 
-            Order temp = new Order { Subotal = SubtotalBox.Value, AdditionalInformations = InfoBox.Text, OrderAddressId = (int)AddressID.Value, UserId = (int)UserID.Value, CompanyId = (int)CompanyID.Value, OrderStatusId = (int)StatusID.Value };
+            User tempUser = (User)UserID.SelectedItem;
+            Company tempComp = (Company)CompanyID.SelectedItem;
+            OrderStatus tempStat = (OrderStatus)StatusID.SelectedItem;
+            Order temp = new Order { Subotal = SubtotalBox.Value, AdditionalInformations = InfoBox.Text, OrderAddressId = 1, UserId = tempUser.UserId, CompanyId = tempComp.CompanyId, OrderStatusId = 1 /* do naprawienia*/ };
             MessageBox.Show("Dodawanie Zamowinia ");
             DBContext.Orders.Add(temp);
             DBContext.SaveChanges();
@@ -71,6 +75,30 @@ namespace FormUI.Views
             }
 
             RefreshData();
+        }
+
+        private void PopulateIdList()
+        {
+            var DBContext = new SimpleWarehousContext();
+
+            var users = DBContext.Users.ToList();
+            UserID.DataSource = users;
+            var companies = DBContext.Companies.ToList();
+            CompanyID.DataSource = companies;
+
+            //DO NAPRAWIENIA
+            //var statuses = DBContext.OrderStatus.ToList();
+            //StatusID.DataSource = statuses;
+
+            UserID.DisplayMember = "Name";
+            UserID.ValueMember = "UserId";
+
+            CompanyID.DisplayMember = "CompanyName";
+            CompanyID.ValueMember = "CompanyId";
+
+            StatusID.DisplayMember = "StatusName";
+            StatusID.ValueMember = "OrderStatusId";
+
         }
     }
 }

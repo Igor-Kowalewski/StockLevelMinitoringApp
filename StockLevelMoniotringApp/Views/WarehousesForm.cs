@@ -21,6 +21,7 @@ namespace FormUI.Views
 
             InitializeComponent();
             RefreshData();
+            PopulateIdList();
 
             this.FormClosed +=
                 new System.Windows.Forms.FormClosedEventHandler(this.WarehousesForm_FormClosed);
@@ -50,7 +51,8 @@ namespace FormUI.Views
         {
             var DBContext = new SimpleWarehousContext();
 
-            Warehous temp = new Warehous { WarehouseName = WarehousesAddName.Text, AddressId = (int)WarehousesAddAddress.Value, CompanyId = (int)WarehousesAddCompany.Value };
+            Company tempComp = (Company)WarehousesAddCompany.SelectedItem;
+            Warehous temp = new Warehous { WarehouseName = WarehousesAddName.Text, AddressId = 1/* po dodaniu okna do adresow pobierane bedzie z niego */, CompanyId = tempComp.CompanyId };
             MessageBox.Show("Dodawanie magazynu " + WarehousesAddName.Text);
             DBContext.Warehouses.Add(temp);
             DBContext.SaveChanges();
@@ -73,5 +75,19 @@ namespace FormUI.Views
 
             RefreshData();
         }
+
+        private void PopulateIdList()
+        {
+            var DBContext = new SimpleWarehousContext();
+
+            var companies = DBContext.Companies.ToList();
+            WarehousesAddCompany.DataSource = companies;
+
+            WarehousesAddCompany.DisplayMember = "CompanyName";
+            WarehousesAddCompany.ValueMember = "CompanyId";
+
+        }
+
+        //zrobic okno do adresow
     }
 }

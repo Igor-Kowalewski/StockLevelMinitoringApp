@@ -35,8 +35,6 @@ namespace FormUI.Views
             this.DeleteButton = new System.Windows.Forms.Button();
             this.NameBox = new System.Windows.Forms.TextBox();
             this.SurnameBox = new System.Windows.Forms.TextBox();
-            this.AddressID = new System.Windows.Forms.NumericUpDown();
-            this.CompanyRoleID = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,9 +43,9 @@ namespace FormUI.Views
             this.label6 = new System.Windows.Forms.Label();
             this.PhoneBox = new System.Windows.Forms.MaskedTextBox();
             this.EmailBox = new System.Windows.Forms.TextBox();
+            this.AddressButton = new System.Windows.Forms.Button();
+            this.CompanyRoleId = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AddressID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyRoleID)).BeginInit();
             this.SuspendLayout();
             // 
             // CustomerGridView
@@ -102,20 +100,6 @@ namespace FormUI.Views
             this.SurnameBox.Name = "SurnameBox";
             this.SurnameBox.Size = new System.Drawing.Size(184, 23);
             this.SurnameBox.TabIndex = 5;
-            // 
-            // AddressID
-            // 
-            this.AddressID.Location = new System.Drawing.Point(682, 343);
-            this.AddressID.Name = "AddressID";
-            this.AddressID.Size = new System.Drawing.Size(178, 23);
-            this.AddressID.TabIndex = 8;
-            // 
-            // CompanyRoleID
-            // 
-            this.CompanyRoleID.Location = new System.Drawing.Point(683, 398);
-            this.CompanyRoleID.Name = "CompanyRoleID";
-            this.CompanyRoleID.Size = new System.Drawing.Size(178, 23);
-            this.CompanyRoleID.TabIndex = 9;
             // 
             // label1
             // 
@@ -186,11 +170,30 @@ namespace FormUI.Views
             this.EmailBox.Size = new System.Drawing.Size(183, 23);
             this.EmailBox.TabIndex = 7;
             // 
+            // AddressButton
+            // 
+            this.AddressButton.Location = new System.Drawing.Point(678, 327);
+            this.AddressButton.Name = "AddressButton";
+            this.AddressButton.Size = new System.Drawing.Size(194, 23);
+            this.AddressButton.TabIndex = 17;
+            this.AddressButton.Text = "Wybierz adres";
+            this.AddressButton.UseVisualStyleBackColor = true;
+            // 
+            // CompanyRoleId
+            // 
+            this.CompanyRoleId.FormattingEnabled = true;
+            this.CompanyRoleId.Location = new System.Drawing.Point(677, 387);
+            this.CompanyRoleId.Name = "CompanyRoleId";
+            this.CompanyRoleId.Size = new System.Drawing.Size(184, 23);
+            this.CompanyRoleId.TabIndex = 18;
+            // 
             // CustomersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.CompanyRoleId);
+            this.Controls.Add(this.AddressButton);
             this.Controls.Add(this.PhoneBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -198,8 +201,6 @@ namespace FormUI.Views
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.CompanyRoleID);
-            this.Controls.Add(this.AddressID);
             this.Controls.Add(this.EmailBox);
             this.Controls.Add(this.SurnameBox);
             this.Controls.Add(this.NameBox);
@@ -218,8 +219,6 @@ namespace FormUI.Views
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomersForm";
             ((System.ComponentModel.ISupportInitialize)(this.CustomerGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AddressID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyRoleID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,8 +232,6 @@ namespace FormUI.Views
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.TextBox NameBox;
         private System.Windows.Forms.TextBox SurnameBox;
-        private System.Windows.Forms.NumericUpDown AddressID;
-        private System.Windows.Forms.NumericUpDown CompanyRoleID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -243,5 +240,7 @@ namespace FormUI.Views
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox PhoneBox;
         private System.Windows.Forms.TextBox EmailBox;
+        private System.Windows.Forms.Button AddressButton;
+        private System.Windows.Forms.ComboBox CompanyRoleId;
     }
 }
