@@ -35,14 +35,12 @@
             this.WarehousesAddName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.WarehousesAddAddress = new System.Windows.Forms.NumericUpDown();
-            this.WarehousesAddCompany = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.WarehousesAddCompany = new System.Windows.Forms.ComboBox();
+            this.AddressButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.warehousesGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WarehousesAddAddress)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WarehousesAddCompany)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -126,32 +124,6 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Address ID";
             // 
-            // WarehousesAddAddress
-            // 
-            this.WarehousesAddAddress.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.WarehousesAddAddress.Location = new System.Drawing.Point(6, 97);
-            this.WarehousesAddAddress.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.WarehousesAddAddress.Name = "WarehousesAddAddress";
-            this.WarehousesAddAddress.Size = new System.Drawing.Size(194, 25);
-            this.WarehousesAddAddress.TabIndex = 6;
-            // 
-            // WarehousesAddCompany
-            // 
-            this.WarehousesAddCompany.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.WarehousesAddCompany.Location = new System.Drawing.Point(6, 145);
-            this.WarehousesAddCompany.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.WarehousesAddCompany.Name = "WarehousesAddCompany";
-            this.WarehousesAddCompany.Size = new System.Drawing.Size(194, 25);
-            this.WarehousesAddCompany.TabIndex = 8;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -178,11 +150,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.AddressButton);
+            this.groupBox1.Controls.Add(this.WarehousesAddCompany);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.WarehousesAddName);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.WarehousesAddCompany);
-            this.groupBox1.Controls.Add(this.WarehousesAddAddress);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -192,6 +164,23 @@
             this.groupBox1.Size = new System.Drawing.Size(206, 196);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // WarehousesAddCompany
+            // 
+            this.WarehousesAddCompany.FormattingEnabled = true;
+            this.WarehousesAddCompany.Location = new System.Drawing.Point(6, 145);
+            this.WarehousesAddCompany.Name = "WarehousesAddCompany";
+            this.WarehousesAddCompany.Size = new System.Drawing.Size(191, 25);
+            this.WarehousesAddCompany.TabIndex = 9;
+            // 
+            // AddressButton
+            // 
+            this.AddressButton.Location = new System.Drawing.Point(6, 97);
+            this.AddressButton.Name = "AddressButton";
+            this.AddressButton.Size = new System.Drawing.Size(194, 23);
+            this.AddressButton.TabIndex = 10;
+            this.AddressButton.Text = "Wybierz adres";
+            this.AddressButton.UseVisualStyleBackColor = true;
             // 
             // WarehousesForm
             // 
@@ -205,8 +194,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Warehouses";
             ((System.ComponentModel.ISupportInitialize)(this.warehousesGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WarehousesAddAddress)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WarehousesAddCompany)).EndInit();
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -223,10 +210,10 @@
         private System.Windows.Forms.TextBox WarehousesAddName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown WarehousesAddAddress;
-        private System.Windows.Forms.NumericUpDown WarehousesAddCompany;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox WarehousesAddCompany;
+        private System.Windows.Forms.Button AddressButton;
     }
 }

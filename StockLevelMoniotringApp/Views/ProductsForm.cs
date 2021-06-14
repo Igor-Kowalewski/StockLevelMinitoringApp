@@ -20,10 +20,12 @@ namespace FormUI.Views
             this.MainFormReference = (MainForm)MainFormReference;
 
             InitializeComponent();
+            ProductsAddPrice.Controls[0].Visible = false;
             this.FormClosed +=
                 new System.Windows.Forms.FormClosedEventHandler(this.ProductsForm_FormClosed);
 
             RefreshData();
+            PopulateIdList();
         }
 
         private void ProductsForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -56,7 +58,8 @@ namespace FormUI.Views
         {
             var DBContext = new SimpleWarehousContext();
 
-            Product temp = new Product { DisplayName = ProductsAddName.Text, Price = (double)ProductsAddPrice.Value, Description = ProductsAddDesc.Text, CategoryId = (int)ProductsAddCat.Value};
+            Category tempCat = (Category)ProductsAddCat.SelectedItem;
+            Product temp = new Product { DisplayName = ProductsAddName.Text, Price = (double)ProductsAddPrice.Value, Description = ProductsAddDesc.Text, CategoryId = tempCat.CategoryId };
             MessageBox.Show("Dodawanie produktu " + ProductsAddName.Text);
             DBContext.Produts.Add(temp);
             DBContext.SaveChanges();
@@ -79,6 +82,18 @@ namespace FormUI.Views
             }
             
             RefreshData();
+        }
+
+        private void PopulateIdList()
+        {
+            var DBContext = new SimpleWarehousContext();
+
+            var categories = DBContext.Categories.ToList();
+            ProductsAddCat.DataSource = categories;
+
+            ProductsAddCat.DisplayMember = "Name";
+            ProductsAddCat.ValueMember = "CategoryId";
+
         }
     }
 }
