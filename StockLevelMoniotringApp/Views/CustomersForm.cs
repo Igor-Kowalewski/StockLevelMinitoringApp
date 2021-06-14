@@ -75,9 +75,9 @@ namespace FormUI.Views
         private void PopulateIdList()
         {
             var DBContext = new SimpleWarehousContext();
-            //DO NAPRAWIENIA
-            //var roles = DBContext.CompanyRole.ToList();
-            //CompanyRoleId.DataSource = roles;
+
+            var roles = DBContext.CompanyRole.ToList();
+            CompanyRoleId.DataSource = roles;
 
             CompanyRoleId.DisplayMember = "RoleName";
             CompanyRoleId.ValueMember = "CompanyRoleId";

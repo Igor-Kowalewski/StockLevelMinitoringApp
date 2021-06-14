@@ -162,9 +162,9 @@ namespace FormUI.Views
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(65, 227);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 17);
+            this.label4.Size = new System.Drawing.Size(61, 17);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Category ID";
+            this.label4.Text = "Category";
             // 
             // menuPanel
             // 

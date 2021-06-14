@@ -23,10 +23,17 @@ namespace FormUI.Data
         public virtual DbSet<Address> Adresses { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
-        public virtual DbSet<Product> Produts { get; set; }
+        public virtual DbSet<CompanyRole> CompanyRole { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
+        public virtual DbSet<OrderStatus> OrderStatus { get; set; }
+        public virtual DbSet<Product> Produts { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Warehous> Warehouses { get; set; }
+        public virtual DbSet<WarehousProduct> WarehouseProducts { get; set; }
+
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

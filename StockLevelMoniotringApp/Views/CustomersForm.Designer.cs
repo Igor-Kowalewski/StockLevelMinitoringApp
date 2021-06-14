@@ -142,18 +142,18 @@ namespace FormUI.Views
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(678, 309);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 15);
+            this.label5.Size = new System.Drawing.Size(49, 15);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Address ID";
+            this.label5.Text = "Address";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(678, 369);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 15);
+            this.label6.Size = new System.Drawing.Size(85, 15);
             this.label6.TabIndex = 15;
-            this.label6.Text = "Company Role ID";
+            this.label6.Text = "Company Role";
             // 
             // PhoneBox
             // 

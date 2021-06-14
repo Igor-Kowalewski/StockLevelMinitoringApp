@@ -126,36 +126,36 @@ namespace FormUI.Views
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(742, 276);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 15);
+            this.label3.Size = new System.Drawing.Size(49, 15);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Order Address ID";
+            this.label3.Text = "Address";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(742, 334);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 15);
+            this.label4.Size = new System.Drawing.Size(83, 15);
             this.label4.TabIndex = 14;
-            this.label4.Text = "User ID";
+            this.label4.Text = "Client number";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(742, 382);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 15);
+            this.label5.Size = new System.Drawing.Size(59, 15);
             this.label5.TabIndex = 15;
-            this.label5.Text = "Company ID";
+            this.label5.Text = "Company";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(742, 435);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 15);
+            this.label6.Size = new System.Drawing.Size(72, 15);
             this.label6.TabIndex = 16;
-            this.label6.Text = "Order Status ID";
+            this.label6.Text = "Order Status";
             // 
             // AddressButton
             // 

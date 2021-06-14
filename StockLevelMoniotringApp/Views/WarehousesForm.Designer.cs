@@ -38,8 +38,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.WarehousesAddCompany = new System.Windows.Forms.ComboBox();
             this.AddressButton = new System.Windows.Forms.Button();
+            this.WarehousesAddCompany = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.warehousesGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -129,9 +129,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(64, 125);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 17);
+            this.label4.Size = new System.Drawing.Size(63, 17);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Company ID";
+            this.label4.Text = "Company";
             // 
             // panel1
             // 
@@ -165,14 +165,6 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
-            // WarehousesAddCompany
-            // 
-            this.WarehousesAddCompany.FormattingEnabled = true;
-            this.WarehousesAddCompany.Location = new System.Drawing.Point(6, 145);
-            this.WarehousesAddCompany.Name = "WarehousesAddCompany";
-            this.WarehousesAddCompany.Size = new System.Drawing.Size(191, 25);
-            this.WarehousesAddCompany.TabIndex = 9;
-            // 
             // AddressButton
             // 
             this.AddressButton.Location = new System.Drawing.Point(6, 97);
@@ -181,6 +173,14 @@
             this.AddressButton.TabIndex = 10;
             this.AddressButton.Text = "Wybierz adres";
             this.AddressButton.UseVisualStyleBackColor = true;
+            // 
+            // WarehousesAddCompany
+            // 
+            this.WarehousesAddCompany.FormattingEnabled = true;
+            this.WarehousesAddCompany.Location = new System.Drawing.Point(6, 145);
+            this.WarehousesAddCompany.Name = "WarehousesAddCompany";
+            this.WarehousesAddCompany.Size = new System.Drawing.Size(191, 25);
+            this.WarehousesAddCompany.TabIndex = 9;
             // 
             // WarehousesForm
             // 

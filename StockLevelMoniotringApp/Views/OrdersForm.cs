@@ -83,14 +83,14 @@ namespace FormUI.Views
 
             var users = DBContext.Users.ToList();
             UserID.DataSource = users;
+
             var companies = DBContext.Companies.ToList();
             CompanyID.DataSource = companies;
 
-            //DO NAPRAWIENIA
-            //var statuses = DBContext.OrderStatus.ToList();
-            //StatusID.DataSource = statuses;
+            var statuses = DBContext.OrderStatus.ToList();
+            StatusID.DataSource = statuses;
 
-            UserID.DisplayMember = "Name";
+            UserID.DisplayMember = "UserId";
             UserID.ValueMember = "UserId";
 
             CompanyID.DisplayMember = "CompanyName";
