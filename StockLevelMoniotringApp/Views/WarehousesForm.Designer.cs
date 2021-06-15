@@ -38,9 +38,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.AddressBox = new System.Windows.Forms.TextBox();
             this.AddressButton = new System.Windows.Forms.Button();
             this.WarehousesAddCompany = new System.Windows.Forms.ComboBox();
-            this.AddressBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.warehousesGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -119,16 +119,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(67, 77);
+            this.label3.Location = new System.Drawing.Point(78, 77);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 17);
+            this.label3.Size = new System.Drawing.Size(56, 17);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Address ID";
+            this.label3.Text = "Address";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(64, 155);
+            this.label4.Location = new System.Drawing.Point(71, 155);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 17);
             this.label4.TabIndex = 7;
@@ -167,6 +167,14 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
+            // AddressBox
+            // 
+            this.AddressBox.Enabled = false;
+            this.AddressBox.Location = new System.Drawing.Point(6, 97);
+            this.AddressBox.Name = "AddressBox";
+            this.AddressBox.Size = new System.Drawing.Size(194, 25);
+            this.AddressBox.TabIndex = 22;
+            // 
             // AddressButton
             // 
             this.AddressButton.Location = new System.Drawing.Point(6, 128);
@@ -184,14 +192,6 @@
             this.WarehousesAddCompany.Name = "WarehousesAddCompany";
             this.WarehousesAddCompany.Size = new System.Drawing.Size(194, 25);
             this.WarehousesAddCompany.TabIndex = 9;
-            // 
-            // AddressBox
-            // 
-            this.AddressBox.Enabled = false;
-            this.AddressBox.Location = new System.Drawing.Point(6, 97);
-            this.AddressBox.Name = "AddressBox";
-            this.AddressBox.Size = new System.Drawing.Size(194, 25);
-            this.AddressBox.TabIndex = 22;
             // 
             // WarehousesForm
             // 

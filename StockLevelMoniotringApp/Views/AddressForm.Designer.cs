@@ -146,6 +146,11 @@ namespace FormUI.Views
             // NumberBox
             // 
             this.NumberBox.Location = new System.Drawing.Point(651, 134);
+            this.NumberBox.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.NumberBox.Name = "NumberBox";
             this.NumberBox.Size = new System.Drawing.Size(125, 23);
             this.NumberBox.TabIndex = 12;

@@ -153,6 +153,11 @@ namespace FormUI.Views
             // 
             this.ProductsAddPrice.DecimalPlaces = 2;
             this.ProductsAddPrice.Location = new System.Drawing.Point(6, 92);
+            this.ProductsAddPrice.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.ProductsAddPrice.Name = "ProductsAddPrice";
             this.ProductsAddPrice.Size = new System.Drawing.Size(194, 25);
             this.ProductsAddPrice.TabIndex = 5;

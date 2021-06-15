@@ -99,7 +99,13 @@ namespace FormUI.Views
             // 
             // SubtotalBox
             // 
+            this.SubtotalBox.DecimalPlaces = 2;
             this.SubtotalBox.Location = new System.Drawing.Point(742, 152);
+            this.SubtotalBox.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.SubtotalBox.Name = "SubtotalBox";
             this.SubtotalBox.Size = new System.Drawing.Size(160, 23);
             this.SubtotalBox.TabIndex = 5;
