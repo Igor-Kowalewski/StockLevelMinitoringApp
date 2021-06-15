@@ -11,6 +11,8 @@ namespace FormUI.Views
 {
     public partial class WarehousesForm : Form
     {
+        public int AdId = 0;
+
         public IWarehouseService WarehouseService { get; set; }
         public MainForm MainFormReference { get; set; }
 
@@ -52,7 +54,7 @@ namespace FormUI.Views
             var DBContext = new SimpleWarehousContext();
 
             Company tempComp = (Company)WarehousesAddCompany.SelectedItem;
-            Warehous temp = new Warehous { WarehouseName = WarehousesAddName.Text, AddressId = 1/* po dodaniu okna do adresow pobierane bedzie z niego */, CompanyId = tempComp.CompanyId };
+            Warehous temp = new Warehous { WarehouseName = WarehousesAddName.Text, AddressId = AdId, CompanyId = tempComp.CompanyId };
             MessageBox.Show("Dodawanie magazynu " + WarehousesAddName.Text);
             DBContext.Warehouses.Add(temp);
             DBContext.SaveChanges();
@@ -87,7 +89,12 @@ namespace FormUI.Views
             WarehousesAddCompany.ValueMember = "CompanyId";
 
         }
-
-        //zrobic okno do adresow
+        private void AddressButton_Click(object sender, EventArgs e)
+        {
+            AddressForm addressForm = new AddressForm();
+            addressForm.warehousesForm = this;
+            addressForm.Show();
+            addressForm.parentID = 2;
+        }
     }
 }

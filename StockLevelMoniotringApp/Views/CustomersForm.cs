@@ -8,8 +8,11 @@ using WindowsFormsApp1;
 
 namespace FormUI.Views
 {
+    
     public partial class CustomersForm : Form
     {
+        public int AdId = 0;
+
         public Form MainFormReference { get; set; }
 
         public CustomersForm()
@@ -48,7 +51,7 @@ namespace FormUI.Views
             var DBContext = new SimpleWarehousContext();
 
             CompanyRole tempRole = (CompanyRole)CompanyRoleId.SelectedItem;
-            User temp = new User {Name = NameBox.Text, Surename = SurnameBox.Text, Phone = PhoneBox.Text, Email = EmailBox.Text, AddressId = 1, CompanyRoleId= 1 /* do naprawienia*/};
+            User temp = new User {Name = NameBox.Text, Surename = SurnameBox.Text, Phone = PhoneBox.Text, Email = EmailBox.Text, AddressId = AdId, CompanyRoleId = tempRole.CompanyRoleId};
             MessageBox.Show("Dodawanie klienta " + NameBox.Text);
             DBContext.Users.Add(temp);
             DBContext.SaveChanges();
@@ -82,6 +85,14 @@ namespace FormUI.Views
             CompanyRoleId.DisplayMember = "RoleName";
             CompanyRoleId.ValueMember = "CompanyRoleId";
 
+        }
+
+        private void AddressButton_Click(object sender, EventArgs e)
+        {
+            AddressForm addressForm = new AddressForm();
+            addressForm.customersForm = this;
+            addressForm.Show();
+            addressForm.parentID = 1;
         }
     }
 }

@@ -45,6 +45,7 @@ namespace FormUI.Views
             this.UserID = new System.Windows.Forms.ComboBox();
             this.CompanyID = new System.Windows.Forms.ComboBox();
             this.StatusID = new System.Windows.Forms.ComboBox();
+            this.AddressBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SubtotalBox)).BeginInit();
             this.SuspendLayout();
@@ -133,7 +134,7 @@ namespace FormUI.Views
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(742, 334);
+            this.label4.Location = new System.Drawing.Point(742, 371);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 15);
             this.label4.TabIndex = 14;
@@ -142,7 +143,7 @@ namespace FormUI.Views
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(742, 382);
+            this.label5.Location = new System.Drawing.Point(742, 419);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 15);
             this.label5.TabIndex = 15;
@@ -151,7 +152,7 @@ namespace FormUI.Views
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(742, 435);
+            this.label6.Location = new System.Drawing.Point(742, 472);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 15);
             this.label6.TabIndex = 16;
@@ -159,17 +160,18 @@ namespace FormUI.Views
             // 
             // AddressButton
             // 
-            this.AddressButton.Location = new System.Drawing.Point(742, 294);
+            this.AddressButton.Location = new System.Drawing.Point(742, 326);
             this.AddressButton.Name = "AddressButton";
             this.AddressButton.Size = new System.Drawing.Size(194, 23);
             this.AddressButton.TabIndex = 17;
-            this.AddressButton.Text = "Wybierz adres";
+            this.AddressButton.Text = "Choose address";
             this.AddressButton.UseVisualStyleBackColor = true;
+            this.AddressButton.Click += new System.EventHandler(this.AddressButton_Click);
             // 
             // UserID
             // 
             this.UserID.FormattingEnabled = true;
-            this.UserID.Location = new System.Drawing.Point(742, 356);
+            this.UserID.Location = new System.Drawing.Point(742, 393);
             this.UserID.Name = "UserID";
             this.UserID.Size = new System.Drawing.Size(121, 23);
             this.UserID.TabIndex = 18;
@@ -177,7 +179,7 @@ namespace FormUI.Views
             // CompanyID
             // 
             this.CompanyID.FormattingEnabled = true;
-            this.CompanyID.Location = new System.Drawing.Point(742, 400);
+            this.CompanyID.Location = new System.Drawing.Point(742, 437);
             this.CompanyID.Name = "CompanyID";
             this.CompanyID.Size = new System.Drawing.Size(121, 23);
             this.CompanyID.TabIndex = 19;
@@ -185,16 +187,25 @@ namespace FormUI.Views
             // StatusID
             // 
             this.StatusID.FormattingEnabled = true;
-            this.StatusID.Location = new System.Drawing.Point(742, 453);
+            this.StatusID.Location = new System.Drawing.Point(742, 490);
             this.StatusID.Name = "StatusID";
             this.StatusID.Size = new System.Drawing.Size(121, 23);
             this.StatusID.TabIndex = 20;
+            // 
+            // AddressBox
+            // 
+            this.AddressBox.Enabled = false;
+            this.AddressBox.Location = new System.Drawing.Point(739, 294);
+            this.AddressBox.Name = "AddressBox";
+            this.AddressBox.Size = new System.Drawing.Size(197, 23);
+            this.AddressBox.TabIndex = 21;
             // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.AddressBox);
             this.Controls.Add(this.StatusID);
             this.Controls.Add(this.CompanyID);
             this.Controls.Add(this.UserID);
@@ -246,5 +257,6 @@ namespace FormUI.Views
         private System.Windows.Forms.ComboBox UserID;
         private System.Windows.Forms.ComboBox CompanyID;
         private System.Windows.Forms.ComboBox StatusID;
+        public System.Windows.Forms.TextBox AddressBox;
     }
 }

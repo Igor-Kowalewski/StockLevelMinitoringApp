@@ -45,6 +45,7 @@ namespace FormUI.Views
             this.EmailBox = new System.Windows.Forms.TextBox();
             this.AddressButton = new System.Windows.Forms.Button();
             this.CompanyRoleId = new System.Windows.Forms.ComboBox();
+            this.AddressBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,7 +150,7 @@ namespace FormUI.Views
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(678, 369);
+            this.label6.Location = new System.Drawing.Point(678, 387);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 15);
             this.label6.TabIndex = 15;
@@ -172,26 +173,36 @@ namespace FormUI.Views
             // 
             // AddressButton
             // 
-            this.AddressButton.Location = new System.Drawing.Point(678, 327);
+            this.AddressButton.Location = new System.Drawing.Point(678, 361);
             this.AddressButton.Name = "AddressButton";
             this.AddressButton.Size = new System.Drawing.Size(194, 23);
             this.AddressButton.TabIndex = 17;
-            this.AddressButton.Text = "Wybierz adres";
+            this.AddressButton.Text = "Choose address";
             this.AddressButton.UseVisualStyleBackColor = true;
+            this.AddressButton.Click += new System.EventHandler(this.AddressButton_Click);
             // 
             // CompanyRoleId
             // 
             this.CompanyRoleId.FormattingEnabled = true;
-            this.CompanyRoleId.Location = new System.Drawing.Point(677, 387);
+            this.CompanyRoleId.Location = new System.Drawing.Point(677, 405);
             this.CompanyRoleId.Name = "CompanyRoleId";
             this.CompanyRoleId.Size = new System.Drawing.Size(184, 23);
             this.CompanyRoleId.TabIndex = 18;
+            // 
+            // AddressBox
+            // 
+            this.AddressBox.Enabled = false;
+            this.AddressBox.Location = new System.Drawing.Point(678, 332);
+            this.AddressBox.Name = "AddressBox";
+            this.AddressBox.Size = new System.Drawing.Size(197, 23);
+            this.AddressBox.TabIndex = 22;
             // 
             // CustomersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.AddressBox);
             this.Controls.Add(this.CompanyRoleId);
             this.Controls.Add(this.AddressButton);
             this.Controls.Add(this.PhoneBox);
@@ -242,5 +253,6 @@ namespace FormUI.Views
         private System.Windows.Forms.TextBox EmailBox;
         private System.Windows.Forms.Button AddressButton;
         private System.Windows.Forms.ComboBox CompanyRoleId;
+        public System.Windows.Forms.TextBox AddressBox;
     }
 }

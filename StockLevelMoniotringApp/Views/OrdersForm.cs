@@ -11,6 +11,9 @@ namespace FormUI.Views
 {
     public partial class OrdersForm : Form
     {
+
+        public int AdId = 0;
+
         public Form MainFormReference { get; set; }
 
         public OrdersForm()
@@ -53,7 +56,7 @@ namespace FormUI.Views
             User tempUser = (User)UserID.SelectedItem;
             Company tempComp = (Company)CompanyID.SelectedItem;
             OrderStatus tempStat = (OrderStatus)StatusID.SelectedItem;
-            Order temp = new Order { Subotal = SubtotalBox.Value, AdditionalInformations = InfoBox.Text, OrderAddressId = 1, UserId = tempUser.UserId, CompanyId = tempComp.CompanyId, OrderStatusId = 1 /* do naprawienia*/ };
+            Order temp = new Order { Subotal = SubtotalBox.Value, AdditionalInformations = InfoBox.Text, OrderAddressId = AdId, UserId = tempUser.UserId, CompanyId = tempComp.CompanyId, OrderStatusId = tempStat.OrderStatusId };
             MessageBox.Show("Dodawanie Zamowinia ");
             DBContext.Orders.Add(temp);
             DBContext.SaveChanges();
@@ -99,6 +102,15 @@ namespace FormUI.Views
             StatusID.DisplayMember = "StatusName";
             StatusID.ValueMember = "OrderStatusId";
 
+            
+        }
+
+        private void AddressButton_Click(object sender, EventArgs e)
+        {
+            AddressForm addressForm = new AddressForm();
+            addressForm.ordersForm = this;
+            addressForm.Show();
+            addressForm.parentID = 0;
         }
     }
 }

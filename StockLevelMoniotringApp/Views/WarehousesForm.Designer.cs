@@ -40,6 +40,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.AddressButton = new System.Windows.Forms.Button();
             this.WarehousesAddCompany = new System.Windows.Forms.ComboBox();
+            this.AddressBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.warehousesGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -75,7 +76,7 @@
             // 
             this.button2.BackColor = System.Drawing.Color.LightGreen;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(3, 265);
+            this.button2.Location = new System.Drawing.Point(3, 286);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(206, 60);
@@ -127,7 +128,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(64, 125);
+            this.label4.Location = new System.Drawing.Point(64, 155);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 17);
             this.label4.TabIndex = 7;
@@ -150,6 +151,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.AddressBox);
             this.groupBox1.Controls.Add(this.AddressButton);
             this.groupBox1.Controls.Add(this.WarehousesAddCompany);
             this.groupBox1.Controls.Add(this.label2);
@@ -161,26 +163,35 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox1.Location = new System.Drawing.Point(3, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(206, 196);
+            this.groupBox1.Size = new System.Drawing.Size(206, 220);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
             // AddressButton
             // 
-            this.AddressButton.Location = new System.Drawing.Point(6, 97);
+            this.AddressButton.Location = new System.Drawing.Point(6, 128);
             this.AddressButton.Name = "AddressButton";
             this.AddressButton.Size = new System.Drawing.Size(194, 23);
             this.AddressButton.TabIndex = 10;
-            this.AddressButton.Text = "Wybierz adres";
+            this.AddressButton.Text = "Choose address";
             this.AddressButton.UseVisualStyleBackColor = true;
+            this.AddressButton.Click += new System.EventHandler(this.AddressButton_Click);
             // 
             // WarehousesAddCompany
             // 
             this.WarehousesAddCompany.FormattingEnabled = true;
-            this.WarehousesAddCompany.Location = new System.Drawing.Point(6, 145);
+            this.WarehousesAddCompany.Location = new System.Drawing.Point(6, 175);
             this.WarehousesAddCompany.Name = "WarehousesAddCompany";
-            this.WarehousesAddCompany.Size = new System.Drawing.Size(191, 25);
+            this.WarehousesAddCompany.Size = new System.Drawing.Size(194, 25);
             this.WarehousesAddCompany.TabIndex = 9;
+            // 
+            // AddressBox
+            // 
+            this.AddressBox.Enabled = false;
+            this.AddressBox.Location = new System.Drawing.Point(6, 97);
+            this.AddressBox.Name = "AddressBox";
+            this.AddressBox.Size = new System.Drawing.Size(194, 25);
+            this.AddressBox.TabIndex = 22;
             // 
             // WarehousesForm
             // 
@@ -215,5 +226,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox WarehousesAddCompany;
         private System.Windows.Forms.Button AddressButton;
+        public System.Windows.Forms.TextBox AddressBox;
     }
 }
