@@ -176,6 +176,7 @@ namespace FormUI.Views
             // 
             // UserID
             // 
+            this.UserID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.UserID.FormattingEnabled = true;
             this.UserID.Location = new System.Drawing.Point(742, 393);
             this.UserID.Name = "UserID";
@@ -184,6 +185,7 @@ namespace FormUI.Views
             // 
             // CompanyID
             // 
+            this.CompanyID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CompanyID.FormattingEnabled = true;
             this.CompanyID.Location = new System.Drawing.Point(742, 437);
             this.CompanyID.Name = "CompanyID";
@@ -192,6 +194,7 @@ namespace FormUI.Views
             // 
             // StatusID
             // 
+            this.StatusID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StatusID.FormattingEnabled = true;
             this.StatusID.Location = new System.Drawing.Point(742, 490);
             this.StatusID.Name = "StatusID";

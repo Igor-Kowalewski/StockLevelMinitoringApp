@@ -207,6 +207,7 @@ namespace FormUI.Views
             // 
             // ProductsAddCat
             // 
+            this.ProductsAddCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProductsAddCat.FormattingEnabled = true;
             this.ProductsAddCat.Location = new System.Drawing.Point(6, 256);
             this.ProductsAddCat.Name = "ProductsAddCat";

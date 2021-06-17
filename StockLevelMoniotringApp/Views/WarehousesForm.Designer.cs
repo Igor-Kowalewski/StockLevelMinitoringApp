@@ -187,6 +187,7 @@
             // 
             // WarehousesAddCompany
             // 
+            this.WarehousesAddCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.WarehousesAddCompany.FormattingEnabled = true;
             this.WarehousesAddCompany.Location = new System.Drawing.Point(6, 175);
             this.WarehousesAddCompany.Name = "WarehousesAddCompany";
