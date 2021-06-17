@@ -183,6 +183,7 @@ namespace FormUI.Views
             // 
             // CompanyRoleId
             // 
+            this.CompanyRoleId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CompanyRoleId.FormattingEnabled = true;
             this.CompanyRoleId.Location = new System.Drawing.Point(677, 405);
             this.CompanyRoleId.Name = "CompanyRoleId";

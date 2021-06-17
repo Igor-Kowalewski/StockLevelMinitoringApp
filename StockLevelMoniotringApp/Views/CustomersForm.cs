@@ -85,6 +85,10 @@ namespace FormUI.Views
             CompanyRoleId.DisplayMember = "RoleName";
             CompanyRoleId.ValueMember = "CompanyRoleId";
 
+            CompanyRole temp = new CompanyRole();
+            temp.CompanyRoleId = -1;
+            temp.RoleName = "Brak";
+            CompanyRoleId.SelectedItem = temp;
         }
 
         private void AddressButton_Click(object sender, EventArgs e)
