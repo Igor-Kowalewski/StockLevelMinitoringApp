@@ -56,7 +56,7 @@
             this.warehousesGridView.Margin = new System.Windows.Forms.Padding(0);
             this.warehousesGridView.Name = "warehousesGridView";
             this.warehousesGridView.Size = new System.Drawing.Size(796, 729);
-            this.warehousesGridView.TabIndex = 12;
+            this.warehousesGridView.TabIndex = 0;
             this.warehousesGridView.TabStop = false;
             // 
             // WarehousesRefresh
@@ -67,7 +67,7 @@
             this.WarehousesRefresh.Margin = new System.Windows.Forms.Padding(0);
             this.WarehousesRefresh.Name = "WarehousesRefresh";
             this.WarehousesRefresh.Size = new System.Drawing.Size(206, 60);
-            this.WarehousesRefresh.TabIndex = 0;
+            this.WarehousesRefresh.TabIndex = 2;
             this.WarehousesRefresh.Text = "Refresh";
             this.WarehousesRefresh.UseVisualStyleBackColor = true;
             this.WarehousesRefresh.Click += new System.EventHandler(this.WarehousesRefresh_Click);
@@ -80,7 +80,7 @@
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(206, 60);
-            this.button2.TabIndex = 9;
+            this.button2.TabIndex = 11;
             this.button2.Text = "Add";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.WarehousesAdd_Click);
@@ -94,7 +94,7 @@
             this.WarehousesDelete.Margin = new System.Windows.Forms.Padding(0);
             this.WarehousesDelete.Name = "WarehousesDelete";
             this.WarehousesDelete.Size = new System.Drawing.Size(206, 60);
-            this.WarehousesDelete.TabIndex = 10;
+            this.WarehousesDelete.TabIndex = 12;
             this.WarehousesDelete.Text = "Delete Selected";
             this.WarehousesDelete.UseVisualStyleBackColor = false;
             this.WarehousesDelete.Click += new System.EventHandler(this.WarehousesDelete_Click);
@@ -105,7 +105,7 @@
             this.WarehousesAddName.MaxLength = 300;
             this.WarehousesAddName.Name = "WarehousesAddName";
             this.WarehousesAddName.Size = new System.Drawing.Size(194, 25);
-            this.WarehousesAddName.TabIndex = 4;
+            this.WarehousesAddName.TabIndex = 5;
             // 
             // label2
             // 
@@ -113,7 +113,7 @@
             this.label2.Location = new System.Drawing.Point(82, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 17);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 4;
             this.label2.Text = "Name";
             // 
             // label3
@@ -122,7 +122,7 @@
             this.label3.Location = new System.Drawing.Point(78, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 17);
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 6;
             this.label3.Text = "Address";
             // 
             // label4
@@ -131,7 +131,7 @@
             this.label4.Location = new System.Drawing.Point(71, 155);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 17);
-            this.label4.TabIndex = 7;
+            this.label4.TabIndex = 9;
             this.label4.Text = "Company";
             // 
             // panel1
@@ -147,7 +147,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(3);
             this.panel1.Size = new System.Drawing.Size(212, 729);
-            this.panel1.TabIndex = 11;
+            this.panel1.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -164,23 +164,26 @@
             this.groupBox1.Location = new System.Drawing.Point(3, 63);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(206, 220);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
             // AddressBox
             // 
+            this.AddressBox.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.AddressBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AddressBox.Enabled = false;
             this.AddressBox.Location = new System.Drawing.Point(6, 97);
             this.AddressBox.Name = "AddressBox";
             this.AddressBox.Size = new System.Drawing.Size(194, 25);
-            this.AddressBox.TabIndex = 22;
+            this.AddressBox.TabIndex = 7;
             // 
             // AddressButton
             // 
+            this.AddressButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.AddressButton.Location = new System.Drawing.Point(6, 128);
             this.AddressButton.Name = "AddressButton";
             this.AddressButton.Size = new System.Drawing.Size(194, 23);
-            this.AddressButton.TabIndex = 10;
+            this.AddressButton.TabIndex = 8;
             this.AddressButton.Text = "Choose address";
             this.AddressButton.UseVisualStyleBackColor = true;
             this.AddressButton.Click += new System.EventHandler(this.AddressButton_Click);
@@ -192,7 +195,7 @@
             this.WarehousesAddCompany.Location = new System.Drawing.Point(6, 175);
             this.WarehousesAddCompany.Name = "WarehousesAddCompany";
             this.WarehousesAddCompany.Size = new System.Drawing.Size(194, 25);
-            this.WarehousesAddCompany.TabIndex = 9;
+            this.WarehousesAddCompany.TabIndex = 10;
             // 
             // WarehousesForm
             // 

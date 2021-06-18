@@ -92,7 +92,7 @@ namespace FormUI.Views
         private void AddressButton_Click(object sender, EventArgs e)
         {
             AddressForm addressForm = new AddressForm();
-            addressForm.warehousesForm = this;
+            addressForm.WarehousesForm = this;
             addressForm.Show();
             addressForm.parentID = 2;
         }

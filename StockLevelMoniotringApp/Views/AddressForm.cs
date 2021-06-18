@@ -11,9 +11,9 @@ namespace FormUI.Views
     public partial class AddressForm : Form
     {
         public int parentID = -1;
-        public OrdersForm ordersForm  { get; set; }
-        public CustomersForm customersForm { get; set; }
-        public WarehousesForm warehousesForm { get; set; }
+        public OrdersForm OrdersForm  { get; set; }
+        public CustomersForm CustomersForm { get; set; }
+        public WarehousesForm WarehousesForm { get; set; }
 
         public AddressForm()
         {
@@ -83,16 +83,16 @@ namespace FormUI.Views
                     case -1:
                     break;
                     case 0:
-                        ordersForm.AddressBox.Text = AddressName;
-                        ordersForm.AdId = temp.AddressId;
+                        OrdersForm.AddressBox.Text = AddressName;
+                        OrdersForm.AdId = temp.AddressId;
                         break;
                     case 1:
-                        customersForm.AddressBox.Text = AddressName;
-                        customersForm.AdId = temp.AddressId;
+                        CustomersForm.AddressBox.Text = AddressName;
+                        CustomersForm.AdId = temp.AddressId;
                         break;
                     case 2:
-                        warehousesForm.AddressBox.Text = AddressName;
-                        warehousesForm.AdId = temp.AddressId;
+                        WarehousesForm.AddressBox.Text = AddressName;
+                        WarehousesForm.AdId = temp.AddressId;
                         break;
                 }
         }

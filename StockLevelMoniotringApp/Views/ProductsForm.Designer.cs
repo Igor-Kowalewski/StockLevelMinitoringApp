@@ -230,7 +230,7 @@ namespace FormUI.Views
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ProductsForm";
+            this.Text = "Products";
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsAddPrice)).EndInit();
             this.menuPanel.ResumeLayout(false);
