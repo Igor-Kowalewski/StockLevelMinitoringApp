@@ -33,12 +33,12 @@ namespace FormUI.Services.PdfService
             }
         }
 
-        public void ExportPDF(string adres, string Client, Company comp, float subtotal, string uwagi)
+        public void ExportPDF(string adres1, string adres2, string Client, Company comp, float subtotal, string uwagi)
         {
             var exportFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            var exportFile = System.IO.Path.Combine(exportFolder, "Zamówienie" + Client + DateTime.Now.ToString("MM/dd/yyyy") + ".pdf");
+            var exportFile = System.IO.Path.Combine(exportFolder, "Zamówienie " + Client + DateTime.Now.ToString("MM/dd/yyyy") + ".pdf");
 
-            string miasto = "MIASTO";
+            string miasto = "Lodz";
             uint lp = 2;
 
             using (var writer = new PdfWriter(exportFile))
@@ -47,24 +47,29 @@ namespace FormUI.Services.PdfService
                 {
                     var doc = new Document(pdf);
 
-                    string compInfo = comp.CompanyName + "\n" + comp.Address;
-                    // COMPANY NAME
-                    Paragraph company = new Paragraph(compInfo)
-                        .SetTextAlignment(TextAlignment.LEFT)
-                        .SetFontSize(15);
-
-
                     // Line Separator
                     LineSeparator ls = new LineSeparator(new SolidLine());
-                    doc.Add(ls);
+
                     // New line
                     Paragraph newline = new Paragraph(new Text("\n"));
 
-                    company.Add(new Tab());
+                    string compInfo = comp.CompanyName + "\n" + comp.Address;
+                    // COMPANY NAME
+                    Paragraph addresses = new Paragraph();
 
-                    company.AddTabStops(new TabStop(1000, TabAlignment.RIGHT));
-                    company.Add(DateTime.Now.ToString("MM/dd/yyyy") + " " + miasto);
-                    doc.Add(company);
+                    doc.Add(ls);
+
+
+
+                    addresses.AddTabStops(new TabStop(1000, TabAlignment.RIGHT));
+                    addresses.Add(new Tab());
+                    addresses.Add(DateTime.Now.ToString("MM/dd/yyyy") + " " + miasto + "\n");
+
+
+
+
+
+                    doc.Add(addresses);
 
 
                     //TITLE
@@ -79,20 +84,25 @@ namespace FormUI.Services.PdfService
                     doc.Add(newline);
 
                     // COMPANYS DATA
-                    string w;
-                    for (int i = 0; i < 6; i++)
-                    {
-                        w = "NAZWA";
-                        // COMPANY NAME
-                        Paragraph temp = new Paragraph(w)
-                            .SetTextAlignment(TextAlignment.LEFT)
-                            .SetFontSize(10);
-                        temp.Add(new Tab());
 
-                        temp.AddTabStops(new TabStop(1000, TabAlignment.RIGHT));
-                        temp.Add(w);
-                        doc.Add(temp);
-                    };
+                    // COMPANY NAME
+                    Paragraph temp = new Paragraph()
+                        .SetTextAlignment(TextAlignment.LEFT)
+                        .SetFontSize(10);
+
+                    temp.AddTabStops(new TabStop(1000, TabAlignment.RIGHT));
+                    temp.Add("Firma");
+                    temp.Add(new Tab());
+                    temp.Add(Client + "\n");
+                    temp.Add("Sloneczna 56");
+                    temp.Add(new Tab());
+                    temp.Add(adres1 + "\n");
+                    temp.Add("Lodz, 98-765");
+                    temp.Add(new Tab());
+                    temp.Add(adres2 + "\n");
+
+                    doc.Add(temp);
+
 
                     Table table = new Table(5);
                     table.SetWidth(UnitValue.CreatePercentValue(100));

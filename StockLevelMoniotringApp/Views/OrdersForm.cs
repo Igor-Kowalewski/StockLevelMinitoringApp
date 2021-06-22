@@ -40,18 +40,34 @@ namespace FormUI.Views
         private void RefreshData()
         {
             var DBContext = new SimpleWarehousContext();
-            //var join = (from o in DBContext.Orders
-            //            join ad in DBContext.Adresses on o.OrderAddressId equals ad.AddressId
-            //            select ad);
-            //var Addresses = DBContext.Adresses.ToList();
-            //MessageBox.Show(Addresses.ToString());
+            var result = (from order in DBContext.Orders
+                      join address in DBContext.Adresses
+                      on order.OrderAddressId equals address.AddressId
+                      join company in DBContext.Companies
+                      on order.CompanyId equals company.CompanyId
+                      join status in DBContext.OrderStatus
+                      on order.OrderStatusId equals status.OrderStatusId
+                      join user in DBContext.Users
+                      on order.UserId equals user.UserId
+                          select new
+                      {
+                          order.Subotal,
+                          order.AdditionalInformations,
+                          user.UserId,
+                          company.CompanyName,
+                          address.Street,
+                          address.StreetNumber,
+                          address.City,
+                          address.Zipcode,
+                          status.StatusName,
+                      }).ToList();
             var Orders = DBContext.Orders.ToList();
-            OrdersGridView.DataSource = Orders;
-            OrdersGridView.Columns[0].Visible = false;
-            OrdersGridView.Columns[3].Visible = false;
-            OrdersGridView.Columns[4].Visible = false;
-            OrdersGridView.Columns[5].Visible = false;
-            OrdersGridView.Columns[6].Visible = false;
+            OrdersGridView.DataSource = result;
+            //OrdersGridView.Columns[0].Visible = false;
+            //OrdersGridView.Columns[3].Visible = false;
+            //OrdersGridView.Columns[4].Visible = false;
+            //OrdersGridView.Columns[5].Visible = false;
+            //OrdersGridView.Columns[6].Visible = false;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -121,7 +137,14 @@ namespace FormUI.Views
         private void PdfButton_Click(object sender, EventArgs e)
         {
             GeneratePDF pdf = new GeneratePDF();
-            pdf.ExportPDF("adres", "klient", (Company)CompanyID.SelectedItem, 456, "uwagi");
+            foreach (DataGridViewRow row in OrdersGridView.SelectedRows)
+            {
+                string client = row.Cells[3].Value.ToString();
+                string adres1 = row.Cells[5].Value.ToString() + " " + row.Cells[4].Value.ToString();
+                string adres2 = row.Cells[6].Value.ToString() + ", " + row.Cells[7].Value.ToString();
+                pdf.ExportPDF(adres1, adres2, client, (Company)CompanyID.SelectedItem, 456, "uwagi");
+            }
+            
             MessageBox.Show("Wygenerowano pdf");
         }
     }
