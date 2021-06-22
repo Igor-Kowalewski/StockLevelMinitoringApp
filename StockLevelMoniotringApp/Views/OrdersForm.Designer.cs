@@ -47,6 +47,7 @@ namespace FormUI.Views
             this.StatusID = new System.Windows.Forms.ComboBox();
             this.AddressBox = new System.Windows.Forms.TextBox();
             this.menuPanel = new System.Windows.Forms.Panel();
+            this.PdfButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SubtotalBox)).BeginInit();
@@ -244,6 +245,7 @@ namespace FormUI.Views
             // menuPanel
             // 
             this.menuPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.menuPanel.Controls.Add(this.PdfButton);
             this.menuPanel.Controls.Add(this.AddButton);
             this.menuPanel.Controls.Add(this.groupBox1);
             this.menuPanel.Controls.Add(this.RefreshButton);
@@ -255,6 +257,21 @@ namespace FormUI.Views
             this.menuPanel.Padding = new System.Windows.Forms.Padding(3);
             this.menuPanel.Size = new System.Drawing.Size(212, 729);
             this.menuPanel.TabIndex = 18;
+            // 
+            // PdfButton
+            // 
+            this.PdfButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PdfButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.PdfButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PdfButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.PdfButton.Location = new System.Drawing.Point(3, 596);
+            this.PdfButton.Margin = new System.Windows.Forms.Padding(0);
+            this.PdfButton.Name = "PdfButton";
+            this.PdfButton.Size = new System.Drawing.Size(206, 60);
+            this.PdfButton.TabIndex = 17;
+            this.PdfButton.Text = "Generate PDF";
+            this.PdfButton.UseVisualStyleBackColor = false;
+            this.PdfButton.Click += new System.EventHandler(this.PdfButton_Click);
             // 
             // groupBox1
             // 
@@ -327,5 +344,6 @@ namespace FormUI.Views
         public System.Windows.Forms.TextBox AddressBox;
         private System.Windows.Forms.Panel menuPanel;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button PdfButton;
     }
 }

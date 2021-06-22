@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using FormUI.Data;
 using FormUI.Models;
 using WindowsFormsApp1;
-
+using FormUI.Services.PdfService;
 
 namespace FormUI.Views
 {
@@ -40,6 +40,11 @@ namespace FormUI.Views
         private void RefreshData()
         {
             var DBContext = new SimpleWarehousContext();
+            //var join = (from o in DBContext.Orders
+            //            join ad in DBContext.Adresses on o.OrderAddressId equals ad.AddressId
+            //            select ad);
+            //var Addresses = DBContext.Adresses.ToList();
+            //MessageBox.Show(Addresses.ToString());
             var Orders = DBContext.Orders.ToList();
             OrdersGridView.DataSource = Orders;
             OrdersGridView.Columns[0].Visible = false;
@@ -111,6 +116,13 @@ namespace FormUI.Views
             addressForm.OrdersForm = this;
             addressForm.Show();
             addressForm.parentID = 0;
+        }
+
+        private void PdfButton_Click(object sender, EventArgs e)
+        {
+            GeneratePDF pdf = new GeneratePDF();
+            pdf.ExportPDF("adres", "klient", (Company)CompanyID.SelectedItem, 456, "uwagi");
+            MessageBox.Show("Wygenerowano pdf");
         }
     }
 }
