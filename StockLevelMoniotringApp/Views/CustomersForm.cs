@@ -39,11 +39,29 @@ namespace FormUI.Views
         private void RefreshData()
         {
             var DBContext = new SimpleWarehousContext();
-            var Users = DBContext.Users.ToList();
-            CustomerGridView.DataSource = Users;
-            CustomerGridView.Columns[0].Visible = false;
-            CustomerGridView.Columns[6].Visible = false;
-            CustomerGridView.Columns[7].Visible = false;
+            var result = (from customer in DBContext.Users
+                          join address in DBContext.Adresses
+                          on customer.AddressId equals address.AddressId
+                          join companyRole in DBContext.CompanyRole
+                          on customer.CompanyRoleId equals companyRole.CompanyRoleId
+                          select new
+                          {
+                              customer.Name,
+                              customer.Surename,
+                              customer.Email,
+                              customer.Phone,
+                              address.Street,
+                              address.StreetNumber,
+                              address.City,
+                              address.Zipcode,
+                              companyRole.RoleName
+                          }).ToList();
+            CustomerGridView.DataSource = result;
+            //var Users = DBContext.Users.ToList();
+            //CustomerGridView.DataSource = Users;
+            //CustomerGridView.Columns[0].Visible = false;
+            //CustomerGridView.Columns[6].Visible = false;
+            //CustomerGridView.Columns[7].Visible = false;
         }
 
         private void AddButton_Click(object sender, EventArgs e)

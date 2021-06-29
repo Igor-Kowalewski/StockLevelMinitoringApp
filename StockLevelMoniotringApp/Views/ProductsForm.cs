@@ -43,9 +43,23 @@ namespace FormUI.Views
         {
             var DBContext = new SimpleWarehousContext();
             var products = DBContext.Produts.ToList();
-            productsGridView.DataSource = products;
-            productsGridView.Columns[0].Visible = false;
-            productsGridView.Columns[4].Visible = false;
+
+            var result = (from product in DBContext.Produts
+                          join category in DBContext.Categories
+                          on product.CategoryId equals category.CategoryId
+                          select new
+                          {
+                              product.DisplayName,
+                              product.Price,
+                              product.Description,
+                              category.Name
+                          }).ToList();
+            productsGridView.DataSource = result;
+            productsGridView.Columns[3].HeaderText = "Category";
+            productsGridView.Columns[0].HeaderText = "ProductName";
+            //productsGridView.DataSource = products;
+            //productsGridView.Columns[0].Visible = false;
+            //productsGridView.Columns[4].Visible = false;
 
             //var stringlist = new List<String>();  // LISTA STRING DO WYKORZYSTANIA NP W LISTBOXACH
             //foreach (var item in products)

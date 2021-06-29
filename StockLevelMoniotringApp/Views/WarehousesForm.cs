@@ -42,11 +42,27 @@ namespace FormUI.Views
         private void RefreshData()
         {
             var DBContext = new SimpleWarehousContext();
-            var Warehouses = DBContext.Warehouses.ToList();
-            warehousesGridView.DataSource = Warehouses;
-            warehousesGridView.Columns[0].Visible = false;
-            warehousesGridView.Columns[2].Visible = false;
-            warehousesGridView.Columns[3].Visible = false;
+            var result = (from warehouse in DBContext.Warehouses
+                          join address in DBContext.Adresses
+                          on warehouse.AddressId equals address.AddressId
+                          join company in DBContext.Companies
+                          on warehouse.CompanyId equals company.CompanyId
+                          select new
+                          {
+                              warehouse.WarehouseName,
+                              address.Street,
+                              address.StreetNumber,
+                              address.City,
+                              address.Zipcode,
+                              company.CompanyName
+                          }).ToList();
+            warehousesGridView.DataSource = result;
+
+            //var Warehouses = DBContext.Warehouses.ToList();
+            //warehousesGridView.DataSource = Warehouses;
+            //warehousesGridView.Columns[0].Visible = false;
+            //warehousesGridView.Columns[2].Visible = false;
+            //warehousesGridView.Columns[3].Visible = false;
         }
 
         private void WarehousesAdd_Click(object sender, EventArgs e)

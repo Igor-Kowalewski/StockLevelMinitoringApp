@@ -33,10 +33,10 @@ namespace FormUI.Services.PdfService
             }
         }
 
-        public void ExportPDF(string adres1, string adres2, string Client, Company comp, float subtotal, string uwagi)
+        public void ExportPDF(string ordernr, string adres1, string adres2, string Client, Company comp, float subtotal, string uwagi)
         {
             var exportFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            var exportFile = System.IO.Path.Combine(exportFolder, "Zamówienie " + Client + DateTime.Now.ToString("MM/dd/yyyy") + ".pdf");
+            var exportFile = System.IO.Path.Combine(exportFolder, "Zamówienie " + ordernr + " " + Client + " " + DateTime.Now.ToString("MM/dd/yyyy") + ".pdf");
 
             string miasto = "Lodz";
             uint lp = 2;
@@ -76,6 +76,7 @@ namespace FormUI.Services.PdfService
                     Paragraph title = new Paragraph("WZ " + Client + " " + DateTime.Now.ToString("MM/dd/yyyy"))
                         .SetTextAlignment(TextAlignment.CENTER)
                         .SetFontSize(20);
+                    doc.Add(newline);
                     doc.Add(newline);
                     doc.Add(title);
                     doc.Add(newline);

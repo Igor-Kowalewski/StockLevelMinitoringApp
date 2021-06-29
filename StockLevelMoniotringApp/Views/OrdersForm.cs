@@ -51,6 +51,7 @@ namespace FormUI.Views
                       on order.UserId equals user.UserId
                           select new
                       {
+                          order.OrderId,
                           order.Subotal,
                           order.AdditionalInformations,
                           user.UserId,
@@ -59,11 +60,11 @@ namespace FormUI.Views
                           address.StreetNumber,
                           address.City,
                           address.Zipcode,
-                          status.StatusName,
+                          status.StatusName
                       }).ToList();
             var Orders = DBContext.Orders.ToList();
             OrdersGridView.DataSource = result;
-            //OrdersGridView.Columns[0].Visible = false;
+            OrdersGridView.Columns[0].Visible = false;
             //OrdersGridView.Columns[3].Visible = false;
             //OrdersGridView.Columns[4].Visible = false;
             //OrdersGridView.Columns[5].Visible = false;
@@ -139,10 +140,11 @@ namespace FormUI.Views
             GeneratePDF pdf = new GeneratePDF();
             foreach (DataGridViewRow row in OrdersGridView.SelectedRows)
             {
-                string client = row.Cells[3].Value.ToString();
-                string adres1 = row.Cells[5].Value.ToString() + " " + row.Cells[4].Value.ToString();
-                string adres2 = row.Cells[6].Value.ToString() + ", " + row.Cells[7].Value.ToString();
-                pdf.ExportPDF(adres1, adres2, client, (Company)CompanyID.SelectedItem, 456, "uwagi");
+                string ordernr = row.Cells[0].Value.ToString();
+                string client = row.Cells[4].Value.ToString();
+                string adres1 = row.Cells[6].Value.ToString() + " " + row.Cells[5].Value.ToString();
+                string adres2 = row.Cells[7].Value.ToString() + ", " + row.Cells[8].Value.ToString();
+                pdf.ExportPDF(ordernr, adres1, adres2, client, (Company)CompanyID.SelectedItem, 456, "uwagi");
             }
             
             MessageBox.Show("Wygenerowano pdf");
